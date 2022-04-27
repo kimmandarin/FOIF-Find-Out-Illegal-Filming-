@@ -24,4 +24,7 @@ public class testController {
 
     @RequestMapping(value = "/testIndex")
     public String testIndex() { return "testIndex";}
+
+    @RequestMapping(value = "/testtest")
+    public String testtest() { return "testtest";}
 }
