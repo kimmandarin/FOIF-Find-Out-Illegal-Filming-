@@ -87,20 +87,21 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
-        <div th:replace="nav.html :: header_fragment"></div>
+        <div th:replace="/fragments/header :: header"></div>
         <br>
         <br>
         <body>
             <div class="main">
                 <h1 class="logo"><img src="./img/bing.jpg" alt="" width="60" height="50">FOIF<img src="./img/bing.jpg" alt="" width="60" height="50" ></h1>
                 <div class="container">
-                    <input type="email" placeholder=" E-mail" id="id" class="account">
-                    <input type="password" placeholder=" Password" id="password" class="account">
-                </br>
-                    <button id="signUp" class="account">Sign In</button>
-                    <a class="nav-link" href="#" ><i>Forgot Password?</i></a>
-
-                    <p id="alert" class="account"> </p>
+                    <form action="" method="post">
+                        <div><input type="email" placeholder=" E-mail" id="email" name="email" class="account" required oninvalid="this.setCustomValidity('이메일을 입력해주세요.')" oninput="this.setCustomValidity('')" ></div>
+                        <div><input type="password" placeholder=" Password" id="password" name="password" class="account" required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="this.setCustomValidity('')" ></div>
+                        </br>
+                        <div><button id="signUp" class="account">Sign In</button></div>
+                        <a class="nav-link" href="#" ><i>Forgot Password?</i></a>
+                        <p id="alert" class="account"> </p>
+                    </form>
                 </div>
             </div>   
             <script src="script.js"></script>

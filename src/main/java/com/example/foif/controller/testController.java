@@ -1,27 +1,42 @@
 package com.example.foif.controller;
 
+import com.example.foif.member.Member;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class testController {
 
-    @RequestMapping(value ="/home")
-    public String main(){
-        return "index";
-    }
-
     @RequestMapping(value = "/test")
-    public String home(){
+    public String home() {
         return "test";
     }
 
-    @RequestMapping(value = "/signup")
-    public String signup() { return "sign_up";}
+    @RequestMapping(value = "/signUp")
+    public String signup() {
+        return "signUp";
+    }
 
-    @RequestMapping(value = "/signin")
-    public String signin() { return "sign_in";}
+    @GetMapping(value = "/signIn")
+    public String signIn(Model model) {
+        return "signIn";
+    }
 
-    @RequestMapping(value = "/testIndex")
-    public String testIndex() { return "testIndex";}
+    @RequestMapping(value = "/home")
+    public String testIndex() {
+        return "Index";
+    }
+
+    @PostMapping("/signIn")
+    @ResponseBody
+    public void form(@ModelAttribute Member member) {
+        System.out.println(member.getPoliceStation());
+        System.out.println(member.getUserName());
+        System.out.println(member.getPoliceId());
+        System.out.println(member.getPhoneNumber());
+        System.out.println(member.getEmail());
+        System.out.println(member.getPassword());
+        System.out.println(member.isAgreeBox());
+    }
 }
