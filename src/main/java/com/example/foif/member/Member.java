@@ -7,16 +7,14 @@ public class Member {
     private String phoneNumber;
     private String email;
     private String password;
-    private boolean agreeBox;
 
-    public Member(String policeStation, String userName, String policeId, String phoneNumber, String email, String password, boolean agreeBox) {
+    public Member(String policeStation, String userName, String policeId, String phoneNumber, String email, String password) {
         this.policeStation = policeStation;
         this.userName = userName;
         this.policeId = policeId;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
-        this.agreeBox = agreeBox;
     }
 
     public String getPoliceStation() {
@@ -67,11 +65,4 @@ public class Member {
         this.password = password;
     }
 
-    public boolean isAgreeBox() {
-        return agreeBox;
-    }
-
-    public void setAgreeBox(boolean agreeBox) {
-        this.agreeBox = agreeBox;
-    }
 }

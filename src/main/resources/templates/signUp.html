@@ -133,7 +133,7 @@
                 <div class="sign_container">
 
                     <!-- <form method="get" action="http://localhost/login.php"> test코드 -->
-                    <form action="/signIn" method="post" id="sign_up_form" >
+                    <form action="/signup" method="post" id="sign_up_form" >
                         <div>
                             <h4>Police station</h4>
                             <div><select name="policeStation" id="policeStation" required>
@@ -170,7 +170,7 @@
                             <h5> I have read and accept the <a href="" onclick="terms()">Terms of Service</a> & <a href="" onclick="privacy()">Privacy Policy</a></h5>
                             <div class="agree_box"><input type="checkbox" name="agreeBox" id="agreeBox" required oninvalid="this.setCustomValidity('개인정보 수집 및 활용 동의해주세요.')" oninput="this.setCustomValidity('')" ></div>
                         </div>
-                        <button id="create_button" th:onclick="|location:href='@{/signIn}'|" type="button">Create Account</button>
+                        <button id="create_button" th:onclick="|location.href='@{/signup}'|" type="submit">Create Account</button>
 
                     </form>
                 </div>        
