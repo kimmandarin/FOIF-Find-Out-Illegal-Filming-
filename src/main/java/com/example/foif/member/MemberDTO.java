@@ -1,6 +1,6 @@
 package com.example.foif.member;
 
-public class Member {
+public class MemberDTO {
     private String policeStation;
     private String userName;
     private String policeId;
@@ -8,7 +8,7 @@ public class Member {
     private String email;
     private String password;
 
-    public Member(String policeStation, String userName, String policeId, String phoneNumber, String email, String password) {
+    public MemberDTO(String policeStation, String userName, String policeId, String phoneNumber, String email, String password) {
         this.policeStation = policeStation;
         this.userName = userName;
         this.policeId = policeId;
@@ -65,4 +65,15 @@ public class Member {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "MemberDTO{" +
+                "policeStation='" + policeStation + '\'' +
+                ", userName='" + userName + '\'' +
+                ", policeId='" + policeId + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

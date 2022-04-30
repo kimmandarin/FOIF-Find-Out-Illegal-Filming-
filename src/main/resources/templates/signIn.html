@@ -1,114 +1,119 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <!-- 부트스트랩 css-->
-        <link
+<head>
+    <!-- 부트스트랩 css-->
+    <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
             crossorigin="anonymous">
-        <title>Sign In</title>
-        <style>
-            .container {
+    <title>Sign In</title>
+    <style>
+        .container {
             display: flex;
             height: 100%;
             flex-direction: column;
-            }
+        }
 
-            .button {
-                display: flex;
-                justify-content: center;
-            }
+        .button {
+            display: flex;
+            justify-content: center;
+        }
 
-            label {
-                cursor: pointer;
-                font-size: 1em;
-                background-color: rgb(196, 208, 210);
-                padding-inline: 15px;
-                border-radius: 10px;
-            }
+        label {
+            cursor: pointer;
+            font-size: 1em;
+            background-color: rgb(196, 208, 210);
+            padding-inline: 15px;
+            border-radius: 10px;
+        }
 
-            #submitButton {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-left: 10px;
-                background-color: rgb(131, 143, 143);
-                color: white;
-                border-radius: 20px;
-                padding: 10px;
-                font-size: 0.8em;
+        #submitButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            background-color: rgb(131, 143, 143);
+            color: white;
+            border-radius: 20px;
+            padding: 10px;
+            font-size: 0.8em;
 
-                cursor: pointer;
-            }
-            .main {
-                width: 300px;
-                height: 350px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                border: 2px solid lightgrey;
-                border-radius: 15px;
-                position: absolute; top: 50%; left: 50%; margin:-150px 0 0 -150px
-          }
+            cursor: pointer;
+        }
 
-            .logo {
-                margin-top: 30px;
-                margin-bottom: 40px;
-                font-weight: bolder;
-                text-shadow:   3px 3px 8px rgb(131, 143, 143) ;
-            }
+        .main {
+            width: 300px;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 2px solid lightgrey;
+            border-radius: 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -150px 0 0 -150px
+        }
 
-            #signUp {
-                width: 100%;
-                background-color: rgb(131, 143, 143);
-                border-color: transparent;
-                color: white;
-                font-weight: bold;
-            }
+        .logo {
+            margin-top: 30px;
+            margin-bottom: 40px;
+            font-weight: bolder;
+            text-shadow: 3px 3px 8px rgb(131, 143, 143);
+        }
 
-            .account {
-                display: block;
-                margin-bottom: 3px;
-                padding: 5px;
-                border: 1px solid lightgray;
-                border-radius: 15px;
-            }
+        #signUp {
+            width: 100%;
+            background-color: rgb(131, 143, 143);
+            border-color: transparent;
+            color: white;
+            font-weight: bold;
+        }
 
-            #alert {
-                border-color: transparent;
-            }
+        .account {
+            display: block;
+            margin-bottom: 3px;
+            padding: 5px;
+            border: 1px solid lightgray;
+            border-radius: 15px;
+        }
 
-        
+        #alert {
+            border-color: transparent;
+        }
 
 
-        </style>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <div th:replace="/fragments/header :: header"></div>
-        <br>
-        <br>
-        <body>
-            <div class="main">
-                <h1 class="logo"><img src="./img/bing.jpg" alt="" width="60" height="50">FOIF<img src="./img/bing.jpg" alt="" width="60" height="50" ></h1>
-                <div class="container">
-                    <form action="" method="post">
-                        <div><input type="email" placeholder=" E-mail" id="email" name="email" class="account" required oninvalid="this.setCustomValidity('이메일을 입력해주세요.')" oninput="this.setCustomValidity('')" ></div>
-                        <div><input type="password" placeholder=" Password" id="password" name="password" class="account" required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="this.setCustomValidity('')" ></div>
-                        </br>
-                        <div><button id="signUp" class="account">Sign In</button></div>
-                        <a class="nav-link" href="#" ><i>Forgot Password?</i></a>
-                        <p id="alert" class="account"> </p>
-                    </form>
-                </div>
-            </div>   
-            <script src="script.js"></script>
-        </body>
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div th:replace="/fragments/header :: header"></div>
+<br>
+<br>
+<body>
+<div class="main">
+    <h1 class="logo"><img src="./img/bing.jpg" alt="" width="60" height="50">FOIF<img src="./img/bing.jpg" alt=""
+                                                                                      width="60" height="50"></h1>
+    <div class="container">
+        <form action="/signin" method="post">
+            <div><input type="email" placeholder=" E-mail" id="email" name="email" class="account" required
+                        oninvalid="this.setCustomValidity('이메일을 입력해주세요.')" oninput="this.setCustomValidity('')"></div>
+            <div><input type="password" placeholder=" Password" id="password" name="password" class="account" required
+                        oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="this.setCustomValidity('')"></div>
+            </br>
+            <div>
+                <button id="signUp" class="account" type="submit">Sign In</button>
+            </div>
+            <a class="nav-link" href="#"><i>Forgot Password?</i></a>
+            <p id="alert" class="account"></p>
+        </form>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
 
-        
-        
-        
-    </body>
+
+</body>
 </html>
