@@ -1,4 +1,4 @@
-package com.example.foif.member;
+package com.example.foif.domain;
 
 public class SignIn {
     private String email;
