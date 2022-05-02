@@ -1,5 +1,6 @@
 package com.example.foif.service;
 
+import com.example.foif.domain.Member;
 import com.example.foif.domain.MemberDTO;
 import com.example.foif.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +25,8 @@ public class MemberService {
     @PersistenceContext
     EntityManager em;
 
-    public void joinMember(MemberDTO dto){
-        memberRepository.save(dto);
-        em.persist(dto);
+    public void joinMember(MemberDTO memberDTO){
+        memberRepository.save(memberDTO);
+        em.persist(memberDTO);
     }
 }

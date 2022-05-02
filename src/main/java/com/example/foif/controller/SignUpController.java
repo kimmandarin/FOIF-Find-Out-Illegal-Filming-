@@ -1,5 +1,6 @@
 package com.example.foif.controller;
 
+import com.example.foif.domain.Member;
 import com.example.foif.domain.MemberDTO;
 import com.example.foif.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,13 @@ public class SignUpController {
 
     @GetMapping(value="/signUp")
     public String addForm(Model model){
-        MemberDTO memberDTO = new MemberDTO();
-        model.addAttribute("memberDTO", memberDTO);
+        model.addAttribute("memberDTO", new Member());
         return "signUp";
     }
 
     @PostMapping(value = "/signUp")
-    public String form(@ModelAttribute() MemberDTO memberDTO) {
-        memberService.joinMember(memberDTO);
+    public String form(@ModelAttribute("memberDTO") Member memberDTO) {
+        //memberService.joinMember(memberDTO);
         return "redirect:/test";
     }
 }

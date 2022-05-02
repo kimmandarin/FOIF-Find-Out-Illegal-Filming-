@@ -133,10 +133,10 @@
                 <div class="sign_container">
 
                     <!-- <form method="get" action="http://localhost/login.php"> test코드 -->
-                    <form action="/signUp" method="post" id="sign_up_form" th:object="${memberDTO}">
+                    <form th:action="@{/signUp}" method="post" id="sign_up_form" th:object="${memberDTO}">
                         <div>
                             <h4>Police station</h4>
-                            <div><select th:field="*{policeStation}"required>
+                            <div><select th:field="*{policeStation}" required>
                                 <option value="02">Seoul</option>
                                 <option value="031">Kyonggi</option>
                                 <option value="032">Incheon</option>
