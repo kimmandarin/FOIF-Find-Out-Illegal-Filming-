@@ -6,14 +6,11 @@ import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 // @javax.persistence.Entity(name="MEMBER")
 @Entity
 @Table(name="member")
 public class MemberDTO {
-
-    public MemberDTO() {
-
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

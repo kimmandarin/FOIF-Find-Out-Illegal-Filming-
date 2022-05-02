@@ -97,10 +97,10 @@
     <h1 class="logo"><img src="./img/bing.jpg" alt="" width="60" height="50">FOIF<img src="./img/bing.jpg" alt=""
                                                                                       width="60" height="50"></h1>
     <div class="container">
-        <form action="/signin" method="post">
-            <div><input type="email" placeholder=" E-mail" id="email" name="email" class="account" required
+        <form th:action="@{/signIn}" method="post" th:object="${member}">
+            <div><input type="email" placeholder=" E-mail" name="email" id="email" class="account" required
                         oninvalid="this.setCustomValidity('이메일을 입력해주세요.')" oninput="this.setCustomValidity('')"></div>
-            <div><input type="password" placeholder=" Password" id="password" name="password" class="account" required
+            <div><input type="password" placeholder=" Password" name="password" id="password" class="account" required
                         oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="this.setCustomValidity('')"></div>
             </br>
             <div>

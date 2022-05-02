@@ -2,27 +2,28 @@ package com.example.foif.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PageController {
-    @GetMapping(value = "/test")
+    @RequestMapping(value = "/test")
     public String home() {
         return "Index";
     }
 
-    @GetMapping(value = "/signup")
+    @RequestMapping(value = "/signup")
     public String signup() {
         System.out.println("signUp 페이지");
         return "signUp";
     }
 
-    @GetMapping(value = "/signin")
+    @RequestMapping(value = "/signin")
     public String signIn() {
         System.out.println("signIn 페이지");
         return "signIn";
     }
 
-    @GetMapping(value = "/home")
+    @RequestMapping(value = "/home")
     public String testIndex() {
         System.out.println("Home 페이지");
         return "home";
