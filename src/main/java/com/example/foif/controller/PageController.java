@@ -28,4 +28,10 @@ public class PageController {
         System.out.println("Home 페이지");
         return "home";
     }
+
+    @RequestMapping(value = "/findpwd")
+    public String findPwd(){
+        System.out.println("비밀번호 찾기 페이지");
+        return "findPW";
+    }
 }

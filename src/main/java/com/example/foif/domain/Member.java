@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,4 +30,6 @@ public class Member {
 
     @NotEmpty(message = "비밀번호를 입력해주세요.")
     private String password;
+
+    private Boolean enabled;
 }

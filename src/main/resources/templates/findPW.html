@@ -7,7 +7,7 @@
             rel="stylesheet"
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
             crossorigin="anonymous">
-    <title>Sign In</title>
+    <title>Find Password</title>
     <style>
         .container {
             display: flex;
@@ -28,22 +28,8 @@
             border-radius: 10px;
         }
 
-        #submitButton {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 10px;
-            background-color: rgb(131, 143, 143);
-            color: white;
-            border-radius: 20px;
-            padding: 10px;
-            font-size: 0.8em;
-
-            cursor: pointer;
-        }
-
         .main {
-            width: 300px;
+            width: 350px;
             height: 350px;
             display: flex;
             justify-content: center;
@@ -51,17 +37,14 @@
             flex-direction: column;
             border: 2px solid lightgrey;
             border-radius: 15px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin: -150px 0 0 -150px
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
         }
 
         .logo {
             margin-top: 30px;
             margin-bottom: 40px;
             font-weight: bolder;
-            text-shadow: 3px 3px 8px rgb(131, 143, 143);
+            text-shadow:   3px 3px 8px rgb(131, 143, 143) ;
         }
 
         #button {
@@ -79,9 +62,8 @@
             border: 1px solid lightgray;
             border-radius: 15px;
         }
-
-        #alert {
-            border-color: transparent;
+        .text_center{
+            text-align: center;
         }
 
 
@@ -89,35 +71,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-<div th:replace="/fragments/header :: header"></div>
+<div th:replace="nav.html :: header_fragment"></div>
 <br>
 <br>
 <body>
 <div class="main">
-    <h1 class="logo"><img src="./img/bing.jpg" alt="" width="60" height="50">FOIF<img src="./img/bing.jpg" alt=""
-                                                                                      width="60" height="50"></h1>
+    <h1 class="logo"><img src="./img/bing.jpg" alt="" width="60" height="50">FOIF<img src="./img/bing.jpg" alt="" width="60" height="50" ></h1>
     <div class="container">
-        <div th:if="${param.error}" class="alert alert-danger" role="alert">
-            PoliceId 또는 비밀번호 오류
+        <div class="text_center">
+            <span style="font-size:0.8em">회원가입 시 등록한 정보를 정확히 입력해주세요.</span>
         </div>
-        <div th:if="${param.logout}" class="alert alert-danger" role="alert">
-            로그아웃 되었습니다.
-        </div>
-        <form th:action="@{/signin}" method="post">
-            <div><input type="text" placeholder=" PoliceId" name="username" id="username" class="account"></div>
-            <div><input type="password" placeholder=" Password" name="password" id="password" class="account"></div>
-            </br>
-            <div>
-                <button id="button" class="account" type="submit">Sign In</button>
-            </div>
-            <a class="nav-link" href="/findpwd"><i>Forgot Password?</i></a>
-            <p id="alert" class="account"></p>
-        </form>
+
+        <input type="text" placeholder=" Please enter your PoliceId" id="policeId" name="policeId" class="account">
+        <input type="email" placeholder=" Please enter your email address" id="email" name="email" class="account">
+        </br>
+        <button id="button" class="account">Next</button>
     </div>
 </div>
 <script src="script.js"></script>
 </body>
-
-
 </body>
 </html>

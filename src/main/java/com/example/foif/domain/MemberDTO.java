@@ -3,6 +3,8 @@ package com.example.foif.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -17,7 +19,7 @@ public class MemberDTO {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "police_id")
+    @Column(name = "username")
     private String policeId;
 
     @Column(name = "police_station")
@@ -35,4 +37,14 @@ public class MemberDTO {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "enabled")
+    private Boolean enabled;
+
+    @ManyToMany
+    @JoinTable(
+            name ="user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<Role> roles = new ArrayList<>();
 }
