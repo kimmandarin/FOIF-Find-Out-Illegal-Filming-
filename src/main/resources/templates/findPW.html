@@ -81,11 +81,13 @@
         <div class="text_center">
             <span style="font-size:0.8em">회원가입 시 등록한 정보를 정확히 입력해주세요.</span>
         </div>
+<form th:action="@{/findpassword}", method="post" th:object="${findPwd}">
+    <input type="text" placeholder=" Please enter your PoliceId" id="username" name="username" class="account">
+    <input type="email" placeholder=" Please enter your email address" id="email" name="email" class="account">
+    </br>
+    <button id="button" class="account">Next</button>
+</form>
 
-        <input type="text" placeholder=" Please enter your PoliceId" id="policeId" name="policeId" class="account">
-        <input type="email" placeholder=" Please enter your email address" id="email" name="email" class="account">
-        </br>
-        <button id="button" class="account">Next</button>
     </div>
 </div>
 <script src="script.js"></script>
