@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- 부트스트랩 css-->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+            crossorigin="anonymous">
+    <title>Main</title>
+    <style>
+        .container {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+        }
+
+        label {
+            cursor: pointer;
+            font-size: 1em;
+            background-color: rgb(196, 208, 210);
+            padding-inline: 15px;
+            border-radius: 10px;
+        }
+
+        .main {
+            width: 1050px;
+            height: 700px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 2px solid lightgrey;
+            border-radius: 15px;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        }
+        .exp {
+            width: 500px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 2px white;
+            border-radius: 15px;
+            position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);
+        }
+
+        .logo {
+            margin-top: 30px;
+            margin-bottom: 40px;
+            font-weight: bolder;
+            text-shadow:   3px 3px 8px rgb(131, 143, 143) ;
+        }
+
+        #button {
+            width: 65%;
+            background-color: rgb(131, 143, 143);
+            border-color: transparent;
+            color: white;
+            font-weight: bold;
+        }
+
+        .account {
+            display: block;
+            margin-bottom:5px;
+            padding: 5px;
+            font-size: 20px;
+            font-family:Arial;
+            width:140px;
+            height: 40px;
+            border-width:0px;
+            color:rgba(255, 255, 255, 1);
+            font-weight:bold;
+            border-radius: 15px; 
+            box-shadow: 1px 3px 8px 1px #899599;
+            text-shadow: 0px 1px 0px rgba(129, 126, 126, 0.93);
+            background:linear-gradient(rgba(253, 252, 252, 0.658), #bab1ba);
+                
+        }
+        
+        .text_center{
+            text-align: center;
+        }
+        
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div th:replace="nav.html :: header_fragment"></div>
+<br>
+<br>
+<body>
+    <div class="main">
+        <div class="text_center">
+            <br>
+            <br>
+         <img src="./img/bing.jpg" alt="" width="210" height="175">
+        </div>
+        <div class="col text-center">
+            <h1 class="logo" style="font-size: 50px;">Find Out Illegal Filming</h1>
+        </div>
+        <div class="exp"> 
+            <h4>
+                <span style="color: rgb(156, 13, 13); font-weight: bold;">FOIF</span>는 편집된 불법영상을 원본 영상과 비교하여 불법 촬영 영상의 원본조작 식별을 도와드립니다.
+            </h4>
+            <br>
+            <button id="button" class="account">Sign In</button>
+            <button id="button" class="account">Sign Up</button>
+        </div>
+    </div>
+    
+<script src="script.js"></script>
+</body>
+</html>
