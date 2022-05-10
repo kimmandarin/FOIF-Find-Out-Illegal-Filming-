@@ -38,7 +38,6 @@
             border-radius: 20px;
             padding: 10px;
             font-size: 0.8em;
-
             cursor: pointer;
         }
 
@@ -73,6 +72,7 @@
         }
 
         .account {
+            width:100%;
             display: block;
             margin-bottom: 3px;
             padding: 5px;
@@ -94,8 +94,7 @@
 <br>
 <body>
 <div class="main">
-    <h1 class="logo"><img src="./img/bing.jpg" alt="" width="60" height="50">FOIF<img src="./img/bing.jpg" alt=""
-                                                                                      width="60" height="50"></h1>
+    <h1 class="logo"><img src="./img/bing.jpg" alt="" width="60" height="50">FOIF<img src="./img/bing.jpg" alt="" width="60" height="50"></h1>
     <div class="container">
         <div th:if="${param.error}" class="alert alert-danger" role="alert">
             PoliceId 또는 비밀번호 오류

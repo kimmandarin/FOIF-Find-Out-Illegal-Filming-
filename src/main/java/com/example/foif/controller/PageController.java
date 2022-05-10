@@ -34,4 +34,9 @@ public class PageController {
         System.out.println("비밀번호 찾기 페이지");
         return "findPW";
     }
+
+    @RequestMapping(value = "/privacypolicy")
+    public String privacyPolicy(){
+        return "privacypolicy";
+    }
 }
