@@ -9,6 +9,19 @@
             crossorigin="anonymous">
     <title>Main</title>
     <style>
+        @keyframes ring {
+            0% {
+                width: 50px;
+                height: 50px;
+                opacity: 0.5;
+            }
+            100% {
+                width: 150px;
+                height: 150px;
+                opacity: 0;
+            }
+        }
+
         .container {
             display: flex;
             height: 100%;
@@ -37,8 +50,12 @@
             flex-direction: column;
             border: 2px solid lightgrey;
             border-radius: 15px;
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
+
         .exp {
             width: 500px;
             height: 250px;
@@ -48,17 +65,27 @@
             flex-direction: column;
             border: 2px white;
             border-radius: 15px;
-            position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .logo {
             margin-top: 30px;
             margin-bottom: 40px;
             font-weight: bolder;
-            text-shadow:   3px 3px 8px rgb(131, 143, 143) ;
+            text-shadow: 3px 3px 8px rgb(131, 143, 143);
         }
 
-        #button {
+        #button1 {
+            width: 65%;
+            background-color: rgb(131, 143, 143);
+            border-color: transparent;
+            color: white;
+            font-weight: bold;
+        }
+        #button2 {
             width: 65%;
             background-color: rgb(131, 143, 143);
             border-color: transparent;
@@ -66,55 +93,70 @@
             font-weight: bold;
         }
 
-        .account {
-            display: block;
-            margin-bottom:5px;
-            padding: 5px;
-            font-size: 20px;
-            font-family:Arial;
-            width:140px;
-            height: 40px;
-            border-width:0px;
-            color:rgba(255, 255, 255, 1);
-            font-weight:bold;
-            border-radius: 15px; 
-            box-shadow: 1px 3px 8px 1px #899599;
-            text-shadow: 0px 1px 0px rgba(129, 126, 126, 0.93);
-            background:linear-gradient(rgba(253, 252, 252, 0.658), #bab1ba);
-                
+        .btn_basics {
+            position: relative;
+            border: none;
+            margin-bottom: 5px;
+            padding: 10px;
+            min-width: 100px;
+            min-height: 50px;
+            background: linear-gradient(
+                    90deg,
+                    rgb(153, 152, 152) 0%,
+                    rgba(129, 126, 126, 1) 100%
+            );
+            border-radius: 1000px;
+            font-weight: 700;
+            transition: 0.3s;
         }
-        
-        .text_center{
+
+        .btn_basics:hover {
+            transform: scale(1.1);
+        }
+
+        .btn_basics:hover::after {
+            content: "";
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            border: 5px solid #b9bdbc;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ring 2s;
+        }
+
+        .text_center {
             text-align: center;
         }
-        
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body>
-<div th:replace="nav.html :: header_fragment"></div>
+<html>
 <br>
 <br>
 <body>
-    <div class="main">
-        <div class="text_center">
-            <br>
-            <br>
-         <img src="./img/bing.jpg" alt="" width="210" height="175">
-        </div>
-        <div class="col text-center">
-            <h1 class="logo" style="font-size: 50px;">Find Out Illegal Filming</h1>
-        </div>
-        <div class="exp"> 
-            <h4>
-                <span style="color: rgb(156, 13, 13); font-weight: bold;">FOIF</span>는 편집된 불법영상을 원본 영상과 비교하여 불법 촬영 영상의 원본조작 식별을 도와드립니다.
-            </h4>
-            <br>
-            <button id="button" class="account">Sign In</button>
-            <button id="button" class="account">Sign Up</button>
-        </div>
+<div class="main">
+    <div class="text_center">
+        <br>
+        <br>
+        <img src="./img/bing.jpg" alt="" width="210" height="175">
     </div>
-    
+    <div class="col text-center">
+        <h1 class="logo" style="font-size: 50px;">Find Out Illegal Filming</h1>
+    </div>
+    <div class="exp">
+        <h4>
+            <span style="color: rgb(156, 13, 13); font-weight: bold;">FOIF</span>는 편집된 불법영상을 원본 영상과 비교하여 불법 촬영 영상의 원본조작
+            식별을 도와드립니다.
+        </h4>
+        <br>
+        <button id="button1" class="btn_basics" type="button" th:onclick="|location.href='@{/signin}'|"> Sign In</button>
+        <button id="button2" class="btn_basics" type="button" th:onclick="|location.href='@{/signup}'|"> Sign Up</button>
+    </div>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
