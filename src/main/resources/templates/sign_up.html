@@ -20,7 +20,7 @@
 
         .block1{
             width: auto;
-            background: yellow; 
+            /* background: yellow;  */
             height: 1300px;
         }
 
@@ -146,24 +146,25 @@
                         </div>
                         <div>
                             <h4>User name</h4>
-                            <div><input type="text" name="name" id="name" placeholder="name"/></div>
+                            <div><input type="text" name="name" id="name" placeholder="name"  required oninvalid="this.setCustomValidity('이름을 입력해주세요.')" onput="this.setCustomValidity()" /></div>
                         </div>
                         <div>
                             <h4>Police ID</h4>
-                            <div><input type="text" name="police_id" id="police_id" placeholder="xxxxxxxx"/></div>
+                            <div><input type="text" name="police_id" id="police_id" placeholder="xxxxxxxx" required oninvalid="this.setCustomValidity('아이디를 입력해주세요.')" onput="this.setCustomValidity()"/></div>
                         </div>
                         <div >
                             <h4>Phone number</h4>
-                            <div><input type="text" name="tel" id="tel" placeholder="010-0000-0000"/></div>
+                            <div><input type="text" name="tel" id="tel" placeholder="010-0000-0000" required oninvalid="this.setCustomValidity('전화번호를 입력해주세요.')" onput="this.setCustomValidity()"/></div>
                         </div>
                         <div >
                             <h4>e-mail</h4>
-                            <div><input type="text" name="email" id="email" placeholder="@kyonggi.ac.kr"/></div>
+                            <div><input type="text" name="email" id="email" placeholder="@kyonggi.ac.kr" required oninvalid="this.setCustomValidity('이메일을 입력해주세요.')" onput="this.setCustomValidity()"/></div>
                         </div>
                         <div>
                             <h4>password</h4>
-                            <div><input type="password" name="pwd" id="pwd" placeholder=""/></div>
+                            <div><input type="password" name="pwd" id="pwd" placeholder="" required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" onput="this.setCustomValidity()"/></div>
                         </div>
+                        <!-- 작성해도 뜨는 오류 -->
 
                         <!-- policy 새창으로 띄우기 -->
                         <div class="agreement">
