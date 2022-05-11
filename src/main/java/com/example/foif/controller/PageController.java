@@ -39,4 +39,14 @@ public class PageController {
     public String privacyPolicy(){
         return "privacypolicy";
     }
+
+    @RequestMapping(value = "/result")
+    public String resultPage(){
+        return "result_page";
+    }
+
+    @RequestMapping(value = "/user")
+    public String userPage(){
+        return "user_page";
+    }
 }
