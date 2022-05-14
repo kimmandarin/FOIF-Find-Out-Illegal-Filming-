@@ -20,6 +20,6 @@ public class SignInController {
     public String form(@ModelAttribute SignIn signIn){
         System.out.println(signIn.getEmail());
         System.out.println(signIn.getPassword());
-        return "redirect:/home";
+        return "redirect:/homePage";
     }
 }

@@ -30,7 +30,7 @@
             height: 40px;
             margin-left: 10px;
         }
-        .filebox input[type="file"] {
+        .filebox input[type="fileDTO"] {
             position: absolute;
             width: 0;
             height: 0;
@@ -115,7 +115,7 @@
 <body>
 <div th:fragment="query">
 <div id="my_div" class="filebox">
-    <div class="file_picture"><img src="./img/file.png" alt="" width="140" height="140"></div>
+    <div class="file_picture"><img src="./img/fileDTO.png" alt="" width="140" height="140"></div>
     <div class="container">
         <div class="image-upload" id="image-upload">
 
@@ -123,7 +123,7 @@
                 <div class="button">
                     <label for="chooseFile">Choose File</label>
                 </div>
-                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                <input type="fileDTO" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
             </form>
             <div class="fileContainer">
                 <div class="fileInput">

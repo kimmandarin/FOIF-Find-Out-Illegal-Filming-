@@ -23,7 +23,7 @@ public class PageController {
         return "signIn";
     }
 
-    @RequestMapping(value = "/home")
+    @RequestMapping(value = "/homePage")
     public String testIndex() {
         System.out.println("Home 페이지");
         return "home";
@@ -38,6 +38,11 @@ public class PageController {
     @RequestMapping(value = "/privacypolicy")
     public String privacyPolicy(){
         return "privacypolicy";
+    }
+
+    @RequestMapping(value = "/termsofservice")
+    public String termsofSerice(){
+        return "termsofservice";
     }
 
     @RequestMapping(value = "/result")

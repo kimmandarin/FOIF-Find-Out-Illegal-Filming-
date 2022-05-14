@@ -1,10 +1,9 @@
 package com.example.foif.repository;
 
-import com.example.foif.domain.File;
+import com.example.foif.domain.FileDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
-public interface FileRepository extends JpaRepository<File, Long> {
-    Optional<File> findById(Long id);
+@Repository
+public interface FileRepository extends JpaRepository<FileDTO, Long> {
 }

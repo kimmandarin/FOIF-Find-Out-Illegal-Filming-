@@ -120,7 +120,7 @@
 
 <body>
     <div class="wrap">
-        <div th:insert="/nav.html :: header_fragment">space for nav</div>
+        <div th:replace="/fragments/header :: header"></div>
         <br>
         <br>
         <div class="block2">
@@ -132,7 +132,7 @@
 
                 <div class="head_info">
                     <div class="info_text">
-                        <h2>No security vendors and no sandboxes flagged this file</h2>  <!-- for text result -->
+                        <h2>No security vendors and no sandboxes flagged this fileDTO</h2>  <!-- for text result -->
                     </div>
 
                     <ul class="info_menu">

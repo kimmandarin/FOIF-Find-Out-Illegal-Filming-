@@ -1,20 +1,17 @@
 package com.example.foif.domain;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
-
-@Data
-@Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Component
 public class File {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
-    private String fileName;
-    private String fileOriName;
-    private String fileUrl;
+    private MultipartFile file;
 }
