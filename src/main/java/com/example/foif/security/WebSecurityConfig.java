@@ -15,12 +15,23 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    DataSource dataSource;
+
     @Autowired
-    private DataSource dataSource;
+    public WebSecurityConfig(DataSource dataSource){
+        this.dataSource = dataSource;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.csrf().disable()
+        http
+                .rememberMe()
+                    .tokenValiditySeconds(3600)
+                    .alwaysRemember(true)
+                    .and()
+                .csrf()
+                    .disable()
                 .authorizeRequests()
                     .antMatchers("/css/**","/js/**","/img/**","/signup","/signin", "/test", "/signUp", "/signIn", "/findpwd", "/findpassword", "/privacypolicy", "/upload", "/termsofservice", "/home").permitAll()
                     .anyRequest().authenticated()
@@ -29,9 +40,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/signin")
                     .successForwardUrl("/homePage")
                     .permitAll()
-                .and()
-                    .logout()
-                    .permitAll();
+                    .and()
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/test");
     }
 
     @Autowired

@@ -113,12 +113,12 @@
                 <div>
                     <h1></h1>
                 </div>
-                <ul class="user_info">
+                <ul class="user_info" th:object="${memberDTO}">
                     <li></li>
-                    <li><div><h3>Police station</h3><div class="info">XXX</div></div></li> 
-                    <li><div><h3>Police ID</h3><div class="info">xxxxxxxx</div></div></li> 
-                    <li><div><h3>Phone number</h3><div class="info">xxx-xxxx-xxxx</div></div></li>
-                    <li><div><h3>e-mail</h3><div class="info">xxxxxxxx.@kyonggi.ac.kr</div></div></li>
+                    <li><div><h3>Police station</h3><span class="info" th:text="${memberDTO.policeStation}">XXX</span></div></li>
+                    <li><div><h3>Police ID</h3><span class="info" th:text="${memberDTO.policeId}">xxxxxxxx</span></div></li>
+                    <li><div><h3>Phone number</h3><span class="info" th:text="${memberDTO.phoneNumber}">xxx-xxxx-xxxx</span></div></li>
+                    <li><div><h3>e-mail</h3><span class="info" th:text="${memberDTO.email}">xxxxxxxx.@kyonggi.ac.kr</span></div></li>
                 </ul>    
             </div>
         </div>

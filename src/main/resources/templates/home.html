@@ -78,11 +78,11 @@
 <br>
 <br>
 
-<form id="video" method="post" enctype="multipart/form-data" onsubmit="resultPage.html">
+<form id="video" method="post" enctype="multipart/form-data">
     <div class="container py-3" >
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
 
-            <form th:action="@{/home}" method="post" th:object="${file}" enctype="multipart/form-data">
+            <form action="/home?${_csrf.parameterName}=${_csrf.token}" method="post" th:object="${file}" enctype="multipart/form-data">
             <div class="col">
                 <div class="card mb-4 rounded-3 shadow-sm">
                     <div class="card-header py-3">
@@ -101,7 +101,7 @@
                             <script type="text/javascript" src="file_btn.js"></script>
                         </div>
                         <div style="text-align: center;">
-                            <button type="submit" id="submit_btn1" th:onclick="|location.href='@{/home}'|" form="video"><b>SUBMIT</b></button>
+                            <button type="submit" id="submit_btn1" th:onclick="|location.href='@{/home}'|" ><b>SUBMIT</b></button>
                         </div>
                     </div>
                 </div>
