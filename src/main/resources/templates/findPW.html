@@ -1,31 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@jinjuring 
-kimmandarin
-/
-FOIF-Find-Out-Illegal-Filming-
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-FOIF-Find-Out-Illegal-Filming-/src/main/resources/templates/findPW.html
-@jinjuring
-jinjuring Update findPW.html
-Latest commit 0d0ef9a 26 minutes ago
- History
- 1 contributor
-162 lines (146 sloc)  4.54 KB
-   
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -155,7 +127,7 @@ Latest commit 0d0ef9a 26 minutes ago
             transform: translate(-50%, -50%);
         }
         .box{
-            transform: translate(-20%,0);
+            transform: translate(-25%,0);
         }
 
     </style>
@@ -167,12 +139,11 @@ Latest commit 0d0ef9a 26 minutes ago
 <br>
 <body>
 <div class="main">
-
     <div class="exp">
+        <img src="./img/bing.jpg" alt="" width="210" height="175">
         <div class="text_center">
-            <img src="./img/bing.jpg" alt="" width="210" height="175">
             <h1 class="logo">Find Out Illegal Filming</h1>
-            <span style="font-size:1em">회원가입 시 등록한 정보를 정확히 입력해주세요.</span>
+            <span style="font-size:1.2em">회원가입 시 등록한 정보를 정확히 입력해주세요.</span>
         </div>
         <div class="box">
             <form th:action="@{/findpassword}", method="post" th:object="${findPwd}">
@@ -188,15 +159,3 @@ Latest commit 0d0ef9a 26 minutes ago
 </body>
 </body>
 </html>
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
