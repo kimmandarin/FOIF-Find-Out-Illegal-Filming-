@@ -18,11 +18,11 @@ import java.util.List;
 public class MemberService {
 
     MemberRepository memberRepository;
-    PasswordEncoder passwordEncoder;
+   // PasswordEncoder passwordEncoder;
 
     @Autowired
-    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder){
-        this.passwordEncoder = passwordEncoder;
+    public MemberService(MemberRepository memberRepository){
+    //    this.passwordEncoder = passwordEncoder;
         this.memberRepository = memberRepository;
     }
 

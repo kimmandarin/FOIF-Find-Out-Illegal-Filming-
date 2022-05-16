@@ -4,11 +4,13 @@ import com.example.foif.domain.File;
 import com.example.foif.domain.FileDTO;
 import com.example.foif.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
@@ -30,19 +32,16 @@ public class FileController {
     }
 
     @PostMapping(value = "/home")
-    public String uploadFile(@ModelAttribute("file") File file) throws IOException{
+    public String uploadFile(@RequestParam(value = "org_v", required = false) MultipartFile file) throws IllegalStateException, IOException{
 
-        System.out.println("Test");
-        System.out.println("파일 이름 : "+file.getFile().getOriginalFilename());
-        System.out.println("Test");
-
-        if(file.getFile() != null){
-            MultipartFile files = file.getFile();
-            String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video" + files.getOriginalFilename();
-            files.transferTo(new java.io.File(fullPath));
+        if( !file.isEmpty() ) {
+            System.out.println("OriginalFilename : " + file.getOriginalFilename());
+            System.out.println("ContentType : " + file.getContentType());
+            String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video" + file.getOriginalFilename();
+            file.transferTo(new java.io.File(fullPath));
 
             FileDTO fileDTO = new FileDTO();
-            fileDTO.setOriginFileName(files.getOriginalFilename());
+            fileDTO.setOriginFileName(file.getOriginalFilename());
             fileDTO.setFullPath(fullPath);
 
             fileService.joinFIle(fileDTO);

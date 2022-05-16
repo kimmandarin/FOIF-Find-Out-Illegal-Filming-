@@ -16,13 +16,13 @@ public class SignUpController {
 
     MemberService memberService;
     Member member;
-    PasswordEncoder passwordEncoder;
+ //   PasswordEncoder passwordEncoder;
 
     @Autowired
-    public SignUpController(MemberService memberService, Member member, PasswordEncoder passwordEncoder){
+    public SignUpController(MemberService memberService, Member member){
         this.member = member;
         this.memberService = memberService;
-        this.passwordEncoder = passwordEncoder;
+      //  this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping(value="/signUp")
@@ -42,13 +42,13 @@ public class SignUpController {
         System.out.println(member.getPassword());
         System.out.println(member.getPoliceStation());
 
-        String encodedPassword = passwordEncoder.encode(member.getPassword());
+     //   String encodedPassword = passwordEncoder.encode(member.getPassword());
 
         memberDTO.setEmail(member.getEmail());
         memberDTO.setPoliceId(member.getPoliceId());
         memberDTO.setPhoneNumber(member.getPhoneNumber());
         memberDTO.setUserName(member.getUserName());
-        memberDTO.setPassword(encodedPassword);
+        memberDTO.setPassword(member.getPassword());
         memberDTO.setPoliceStation(member.getPoliceStation());
         memberDTO.setEnabled(true);
         Role role = new Role();
