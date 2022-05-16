@@ -23,53 +23,58 @@
         .block2{
             width: auto;
             /* background: yellow;  */
-            height: 1300px;
+            height: 850px; 
+            /* height 850기준 수정 05/16*/
         }
 
         .head_bar{
             padding-top: 30px;
             width: auto;
             background: rgb(228, 228, 228);
-            height: 320px;
+            height: 150px;
             display: flex;
         }
 
         .bar_icon{
-            width: 137px;
-            height: 130px;
-
+            width: 75px;
+            height: 75px;
             margin-left: 30px;
-            
         }
-        .bar_icon > h2{
+        
+        /* .bar_icon > h2{
             text-align: center;
             margin-top: 50px;
-            
-        }
+        } */
 
         .head_info{
-            width: 1100px;
-            height: auto;    
+            width: 700px;
+            height: auto;   
+            /* background-color: antiquewhite;  */
+            
         }
        
 
         .info_text{
-            width: 950px;
-            margin: 20px auto;
+            width: 700px;
+            margin: 15px 0px 0px 50px;
             height: 50px;
             background: #b5b7b880;
             box-shadow: 10px 10px 10px rgba(59, 59, 59, 0.3);
-        }
-
-        .info_text > h2{
+            
             text-align: center;
+            
         }
 
-        .info_menu{
+        .info_text > h2{      
+            line-height: 50px;    
+            font-size: 20px;
+        }
+
+        /* .info_menu{
             margin: 30px auto;
             display: flex;
             width: 1100px;
-            /* background: bisque; */
+            background: bisque; 
         }
 
         .info_menu > li{
@@ -85,20 +90,21 @@
 
         .info_menu > li:not(:last-child) > div{
             border-right: 1px solid gray;
-        }
+        } */
 
 
         /* radio button & label*/
+
         .tab_content{
             margin: 20px 30px;
         }
 
         input[type="radio"] {display:none;}
-        input[type="radio"]+label{display: inline-block;padding: 20px; background: rgb(199, 199, 199); font-size: 17px; cursor: pointer;}
+        input[type="radio"]+label{display: inline-block;padding: 10px; background: rgb(199, 199, 199); font-size: 15px; cursor: pointer;}
         input[type="radio"]:checked+label{background: rgb(181, 215, 235);}
 
         /* contents invisible */
-        .con{width: auto; height: 900px; background: rgb(243, 243, 243);margin: 0 auto;display: none;}
+        .con{width: auto; height: 600px; background: rgb(243, 243, 243);margin: 0 auto;display: none;}
         
         /* make visible */
         input[id=tab1]:checked~.tab1 {display: block;}
@@ -117,7 +123,8 @@
 
 </head>
 
-
+<!-- justify-content: center;
+align-items: center; -->
 <body>
     <div class="wrap">
         <div th:insert="/nav.html :: header_fragment">space for nav</div>
@@ -127,7 +134,7 @@
             <div class="head_bar">
                 <div class="bar_icon">
                     <img src="../static/img/icon2.svg" alt="">
-                    <h2>0/100</h2> <!-- for numerical result -->
+                    <!-- <h2>60%</h2> for numerical result -->
                 </div>
 
                 <div class="head_info">
@@ -135,38 +142,39 @@
                         <h2>No security vendors and no sandboxes flagged this file</h2>  <!-- for text result -->
                     </div>
 
-                    <ul class="info_menu">
-                        <li><div><h4>hash</h4><div class="result">6eb17de36ec0afdd012971a3810a2e5463e74b2e2b530b2caba38ae84e6a18ae</div></div></li> 
-                        <li><div><h4>size</h4><div class="result">142.19 KB</div></div></li> 
-                        <li><div><h4>time</h4><div class="result">2022-05-03 12:06:52 UTC</div></div></div></li>
-                    </ul>
                 </div>
+                    </div>
+                    <div class="tab_content">
+                        <input type="radio" name="tabmenu" id="tab1" checked>
+                        <label for="tab1">DETECTION</label>
+                        <input type="radio" name="tabmenu" id="tab2">
+                        <label for="tab2">DETAILS</label>
+                        <input type="radio" name="tabmenu" id="tab3">
+                        <label for="tab3">COMMUNITY</label>
+    
+                        <div class="con tab1">
+                            <div>
+                                <h5><strong>Security Vendors' Analysis</strong></h5>
+                            </div>
+                            <ul class="info_menu">
+                                <li><div><h4>hash</h4><div class="result">6eb17de36ec0afdd012971a3810a2e5463e74b2e2b530b2caba38ae84e6a18ae</div></div></li> 
+                                <li><div><h4>size</h4><div class="result">142.19 KB</div></div></li> 
+                                <li><div><h4>time</h4><div class="result">2022-05-03 12:06:52 UTC</div></div></div></li>
+                            </ul>
+                        </div>
 
-                <div class="tab_content">
-                    <input type="radio" name="tabmenu" id="tab1" checked>
-                    <label for="tab1">DETECTION</label>
-                    <input type="radio" name="tabmenu" id="tab2">
-                    <label for="tab2">DETAILS</label>
-                    <input type="radio" name="tabmenu" id="tab3">
-                    <label for="tab3">COMMUNITY</label>
+                        <div class="con tab2">
+                            <div>
+                                <h5><strong>Basic Properties</strong></h5>
+                            </div>
+                        </div>
 
-                    <div class="con tab1">
-                        <div>
-                            <h5><strong>Security Vendors' Analysis</strong></h5>
+                        <div class="con tab3">
+                            <div>
+                                <h5><strong>Comments</strong></h5>
+                            </div>
                         </div>
-                    </div>
-                    <div class="con tab2">
-                        <div>
-                            <h5><strong>Basic Properties</strong></h5>
                         </div>
-                    </div>
-                    <div class="con tab3">
-                        <div>
-                            <h5><strong>Comments</strong></h5>
-                        </div>
-                    </div>
-                    </div>
-                    </div>
                 </div>
 
                 
