@@ -10,6 +10,19 @@
     <title>회원가입 페이지</title>
 
     <style>
+        @keyframes ring {
+            0% {
+                width: 50px;
+                height: 50px;
+                opacity: 0.5;
+            }
+            100% {
+                width: 150px;
+                height: 150px;
+                opacity: 0;
+            }
+        }
+
         *{
             list-style: none;
             border-collapse: collapse;
@@ -21,29 +34,32 @@
         .block1{
             width: auto;
             background: #fff;
-            height: 2400px;
+            height: 700px;
         }
 
         .head_icon{
             width: 140px;
             margin: auto;
-            padding-top: 10px;
             background: rgb(255, 255, 255);
         }
 
         .sign_box{
-            width: 700px;
-            margin: 20px auto;
-            height: 1100px;
+            width: 950px;
+            margin: auto;
+            height: 800px;
             background: #fff;
-            box-shadow: 10px 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 10px 20px 50px rgba(58, 58, 58, 0.3);
             border-radius: 30px;
         }
 
         .s_title > h1{
             text-align: center;
             border-bottom: 1px solid gray;
-            background: rgb(131,143,143);
+            background: linear-gradient(
+                    90deg,
+                    rgb(153, 152, 152) 0%,
+                    rgba(129, 126, 126, 1) 100%
+            );
             border-radius: 30px 30px 0px 0px;
             line-height: 65px;
             height: 65px;
@@ -52,21 +68,21 @@
 
         .sign_container{
             width: 650px;
-            margin: 70px auto;
+            margin: 10px auto;
             /* background: beige; */
-            height: 900px;
+            height: 700px;
             text-align: center;
         }
 
         .sign_container > form > div{
-            padding-bottom: 30px;
+            padding-bottom: 20px;
             /* background: yellow; */
         }
 
         input,
         select{
-            width: 400px;
-            height: 35px;
+            width: 350px;
+            height: 40px;
             text-align: center;
             font-size: 20px;
             border-radius: 35px;
@@ -74,112 +90,121 @@
 
         .agreement{
             width: 100%;
-            height: 120px;
-            margin: auto;
+            height: 90px;
         }
 
-        .agreement > h5{
-            flex: 1;
-        }
-
-        #agree_box{
-            flex: 1;
-            width: auto;
-            height: 25px;
-        }
-
-        .for_th{
-            text-align: center;
-            width: 100%;
-            height: 50px;
-            background:bisque;
-        }
-
-        #create_button {
-            justify-content: center;
-            align-items: center;
+        #button {
+            width: 50%;
             background-color: rgb(131, 143, 143);
+            border-color: transparent;
             color: white;
-            border-radius: 35px;
-            padding: 15px 20px;
-            font-size: 20px;
+            font-weight: bold;
         }
+
+        .btn_basics {
+            position: relative;
+            border: none;
+            margin-bottom: 5px;
+            padding: 10px;
+            min-width: 100px;
+            min-height: 50px;
+            background: linear-gradient(
+                    90deg,
+                    rgb(153, 152, 152) 0%,
+                    rgba(129, 126, 126, 1) 100%
+            );
+            border-radius: 1000px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn_basics:hover {
+            transform: scale(1.1);
+        }
+
+        .btn_basics:hover::after {
+            content: "";
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            border: 5px solid #b9bdbc;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ring 2s;
+        }
+        #check{ color:#fff; position:absolute; bottom:7px; left:10px; font:400 11px/15px 'Nanum Gothic','돋움'; }
 
     </style>
-
-
 </head>
 
 <body>
 <div class="wrap">
-    <div th:insert="/fragments/header :: header">space for nav</div>
     <br>
     <br>
-
     <div class="block1">
         <div class="head_icon">
             <img src="./img/icon.svg" alt="">
         </div>
-
         <div class="sign_box">
             <div class="s_title">
                 <h1>SignUp</h1>
             </div>
-
             <div class="sign_container">
                 <!-- <form method="get" action="http://localhost/login.php"> test코드 -->
                 <form th:action="@{/signUp}" method="post" id="sign_up_form" th:object="${member}" >
                     <div>
-                        <h4>Police station</h4>
-                        <div><select id="policeStation" name="policeStation" required>
-                            <option value="02">Seoul</option>
-                            <option value="031">Kyonggi</option>
-                            <option value="032">Incheon</option>
-                            <option value="054">Busan</option>
-                            <option value="033">Gangwon</option>
-                        </select></div>
+                        <h5>Police station</h5>
+                        <div>
+                            <select id="policeStation" name="policeStation" required>
+                                <option value="02">Seoul</option>
+                                <option value="031">Kyonggi</option>
+                                <option value="032">Incheon</option>
+                                <option value="054">Busan</option>
+                                <option value="033">Gangwon</option>
+                            </select>
+                        </div>
                     </div>
                     <div>
-                        <h4>User name</h4>
+                        <h5>User name</h5>
                         <div><input id="userName" name="userName" type="text" placeholder="name" required /></div>
                     </div>
                     <div>
-                        <h4>Police ID</h4>
+                        <h5>Police ID</h5>
                         <div><input id="policeId" name="policeId" type="text"  placeholder="xxxxxxxx" required/></div>
                     </div>
                     <div >
-                        <h4>Phone number</h4>
+                        <h5>Phone number</h5>
                         <div><input id="phoneNumber" name="phoneNumber"  type="text"  placeholder="010 0000 0000" required/></div>
                     </div>
                     <div >
-                        <h4>e-mail</h4>
+                        <h5>e-mail</h5>
                         <div><input id="email" name="email" type="text"  placeholder="@kyonggi.ac.kr"/></div>
                     </div>
                     <div>
-                        <h4>password</h4>
+                        <h5>password</h5>
                         <div><input id="password" name="password" type="password"  placeholder="" required/></div>
                     </div>
 
                     <!-- policy 새창으로 띄우기 -->
                     <div class="agreement">
-                        <h5> I have read and accept the <a href="" onclick="terms()">Terms of Service</a> & <a href="" onclick="privacy()">Privacy Policy</a></h5></br>
-                        <div class="agree_box"><input type="checkbox" name="agreeBox" id="agreeBox" required oninvalid="this.setCustomValidity('개인정보 수집 및 활용 동의해주세요.')" oninput="this.setCustomValidity('')" ></div>
+                        <h5>I have read and accept the <a href="" onclick="terms()">Terms of Service</a> & <a href="" onclick="privacy()">Privacy Policy</a></h5>
+                        <input type="checkbox" name="agreeBox" id="agreeBox" required oninvalid="this.setCustomValidity('개인정보 수집 및 활용 동의해주세요.')" oninput="this.setCustomValidity('')" >
                     </div>
-                    <button id="create_button" th:onclick="|location.href='@{/signup}'|" type="submit">Create Account</button>
-
+                    <button id="button"  class="btn_basics" th:onclick="|location.href='@{/signup}'|" type="submit">Create Account</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-
 <script>
     function terms(){
-        window.open("./termsofservice", "", "width=330, height=450");
+        window.open("./termsofservice.html", "", "width=330, height=450");
     }
     function privacy(){
-        window.open("/privacypolicy", "", "width=330, height=450");
+        window.open("./privacypolicy.html", "", "width=330, height=450");
     }
 </script>
 

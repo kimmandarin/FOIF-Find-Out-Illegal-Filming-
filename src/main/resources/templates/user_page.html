@@ -103,8 +103,8 @@
                 <div class="user_img">
                     <img src="../static/img/icon.svg" alt="">
                 </div>
-                <div class="user_name"> 
-                    <h1>user name</h1> <!-- for user name -->
+                <div class="user_name" th:object="${memberDTO}">
+                    <h1 th:text="${memberDTO.userName}">user name</h1> <!-- for user name -->
                     <h4>관리자</h4> <!-- for user grade-->
                 </div>
             </div>
