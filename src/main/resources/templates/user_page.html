@@ -19,74 +19,89 @@
         }
 
         .block4{
-            width: auto;
+            justify-content: center;
+            margin: auto;
+            width: 700px;
             /* background: yellow;  */
             height: 850px;
-            /* height 850기준 수정 05/16*/
+            /* height 850기준 수정 */
+            display: flex;
         }
 
         .user_left{
-            margin-left: 25px;
-            width:450px;
-            height: 1200px;
+            border-radius: 50px 0px 0px 0px;
+            width:200px;
+            height: 850px;
             background: rgba(72, 122, 168, 0.774);
-            box-shadow: 10px 0px 10px rgba(0,0,0,0.3);
+            /* box-shadow: 10px 0px 10px rgba(0,0,0,0.3); */
         }
 
         .user_right{
-            width:950px;
-            height: 1200px;
-            margin: 0px 30px 0px 25px;
-            background: rgba(131, 143, 143, 0.425);
+            width:500px;
+            height: 850px;
+            /* margin: 0px 30px 0px 25px; */
+            background: #b5b7b880;
 
         }
 
         .user_img{
-            margin-top: 450px;
+            margin-top: 40px;
             width: auto;
             text-align: center;
             /* good */
         }
 
         .user_img > img{
-            width: 150px;
-            height: 150px;
+            width: 80px;
+            height: 80px;
             background: #fff;
             border-radius: 70px;
         }
 
         .user_name > h1{
             text-align: center;
+            font-size: 30px;
         }
         .user_name > h4{
             text-align: center;
+            font-size: 20px;
         }
 
         .user_info{
-            width: auto;
-            height: 1000px;
-            margin: 0px 30px 0px 10px;
-            /* background: yellow; */
+            width: 500px;
+            height: 850px;
+            margin: auto;
+            /* background: blue; */
         }
 
         .user_info > li{
-            height: calc(1000px / 5) ;
+            height: 100px;
         }
 
         .user_info > li > div{
             text-align: left;
-            margin: 0px 10px 0px 10px;
-            height: 100px;
+            /* margin: 0px 10px 0px 10px; */
+            height: 50px;
 
         }
 
         .user_info > li > div > h3{
-            letter-spacing: 0.1em;
-            border-bottom: 5px solid rgb(243, 243, 243);
+            font-size: 20px;
+            letter-spacing: 0.2em;
+            border-bottom: 3px solid rgb(243, 243, 243);
         }
 
         .user_info > li > div .info{
-            font-size: 20px;
+            font-size: 16px;
+        }
+
+        .menu_list_f{
+            border-top: 3px solid rgb(243, 243, 243);
+        }
+        .menu_list_f, .menu_list{
+            padding-left: 8px;
+            border-bottom: 2px solid rgb(220, 221, 223);
+            height: 30px;
         }
 
 
@@ -102,12 +117,24 @@
     <div class="block4">
         <div class="user_left">
             <div class="user_img">
-                <img src="../static/img/icon.svg" alt="">
+                <img src="./img/icon.svg" alt="">
             </div>
             <div class="user_name" th:object="${userDTO}">
                 <h1 th:text="${userDTO.userName}">user name</h1> <!-- for user name -->
                 <h4 th:text="${userDTO.role}">role</h4> <!-- for user grade-->
             </div>
+
+            <div class="menu_list_f">
+                history
+            </div>
+            <div class="menu_list">
+                change pw
+            </div>
+            <div class="menu_list">
+                etc
+            </div>
+
+
         </div>
 
         <div class="user_right">
