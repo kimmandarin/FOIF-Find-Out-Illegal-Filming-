@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- 부트스트랩 css-->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+            crossorigin="anonymous">
+    <title>Query</title>
+    <style>
+        /*
+        .filebox .upload-name{
+            display: inline-block;
+            height: 40px;
+            padding: 0 10px;
+            vertical-align: middle;
+            border: 1px solid #dddddd;
+            width: 78%;
+            color: #999999;
+        }
+        .filebox label {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            vertical-align: middle;
+            background-color: #999999;
+            cursor: pointer;
+            height: 40px;
+            margin-left: 10px;
+        }
+        .filebox input[type="fileDTO"] {
+            position: absolute;
+            width: 0;
+            height: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 0;
+        }
+        */
+
+        .video_area{
+            text-align: center;
+            margin-top: 60px;
+        }
+        .file_picture{
+            margin: 40px;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        .image-upload {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+        }
+
+        label {
+            cursor: pointer;
+            font-size: 1em;
+            background-color: rgb(196, 208, 210);
+            padding-inline: 15px;
+            border-radius: 10px;
+        }
+
+        #chooseFile {
+            visibility: hidden;
+        }
+
+        .fileContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px;
+        }
+
+        .fileInput {
+            display: flex;
+            align-items: center;
+            border-bottom: solid 2px black;
+            width: 60%;
+            height: 30px;
+        }
+
+        #fileName {
+            margin-left: 5px;
+        }
+
+        #submitButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            background-color: rgb(131, 143, 143);
+            color: white;
+            border-radius: 20px;
+            padding: 10px;
+            font-size: 0.8em;
+
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div th:fragment="query">
+<div id="my_div" class="filebox">
+    <div class="file_picture"><img src="./img/fileDTO.png" alt="" width="140" height="140"></div>
+    <div class="container">
+        <div class="image-upload" id="image-upload">
+
+            <form method="post" enctype="multipart/form-data">
+                <div class="button">
+                    <label for="chooseFile">Choose File</label>
+                </div>
+                <input type="fileDTO" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+            </form>
+            <div class="fileContainer">
+                <div class="fileInput">
+                    <p>FILE NAME: </p>
+                    <p id="fileName"></p>
+                </div>
+                <div class="buttonContainer">
+                    <div class="submitButton" id="submitButton">SUBMIT</div>
+                </div>
+            </div>
+        </div>
+        <div class="image-show" id="image-show"></div>
+    </div>
+    <script src="./js/index.js"></script>
+</div>
+</div>
+</div>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+</body>
+</html>
