@@ -20,8 +20,9 @@
 
         .block4{
             width: auto;
-            height: 1200px;
-            display: flex;
+            /* background: yellow;  */
+            height: 850px; 
+            /* height 850기준 수정 05/16*/
         }
 
         .user_left{
@@ -94,7 +95,7 @@
 
 <body>
     <div class="wrap">
-        <div th:insert="/nav.html :: header_fragment">space for nav</div>
+        <div th:replace="/fragments/header :: header"></div>
         <br>
         <br>
 
@@ -103,8 +104,8 @@
                 <div class="user_img">
                     <img src="../static/img/icon.svg" alt="">
                 </div>
-                <div class="user_name"> 
-                    <h1>user name</h1> <!-- for user name -->
+                <div class="user_name" th:object="${memberDTO}">
+                    <h1 th:text="${memberDTO.userName}">user name</h1> <!-- for user name -->
                     <h4>관리자</h4> <!-- for user grade-->
                 </div>
             </div>
@@ -113,12 +114,12 @@
                 <div>
                     <h1></h1>
                 </div>
-                <ul class="user_info">
+                <ul class="user_info" th:object="${memberDTO}">
                     <li></li>
-                    <li><div><h3>Police station</h3><div class="info">XXX</div></div></li> 
-                    <li><div><h3>Police ID</h3><div class="info">xxxxxxxx</div></div></li> 
-                    <li><div><h3>Phone number</h3><div class="info">xxx-xxxx-xxxx</div></div></li>
-                    <li><div><h3>e-mail</h3><div class="info">xxxxxxxx.@kyonggi.ac.kr</div></div></li>
+                    <li><div><h3>Police station</h3><span class="info" th:text="${memberDTO.policeStation}">XXX</span></div></li>
+                    <li><div><h3>Police ID</h3><span class="info" th:text="${memberDTO.policeId}">xxxxxxxx</span></div></li>
+                    <li><div><h3>Phone number</h3><span class="info" th:text="${memberDTO.phoneNumber}">xxx-xxxx-xxxx</span></div></li>
+                    <li><div><h3>e-mail</h3><span class="info" th:text="${memberDTO.email}">xxxxxxxx.@kyonggi.ac.kr</span></div></li>
                 </ul>    
             </div>
         </div>
