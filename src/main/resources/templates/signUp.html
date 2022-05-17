@@ -10,6 +10,14 @@
     <title>회원가입 페이지</title>
 
     <style>
+        *{
+            list-style: none;
+            border-collapse: collapse;
+            margin: 0px;
+            padding: 0px;
+            color: black;
+        }
+
         @keyframes ring {
             0% {
                 width: 50px;
@@ -23,90 +31,116 @@
             }
         }
 
-        *{
-            list-style: none;
-            border-collapse: collapse;
-            margin: 0px;
-            padding: 0px;
-            color: black;
-        }
-
         .block1{
             width: auto;
-            background: #fff;
-            height: 700px;
+            /* background: yellow;  */
+            height: 850px;
+            /* height 850기준 수정 05/16*/
         }
 
         .head_icon{
-            width: 140px;
+
+            width: 75px;
+            height: 75px;
             margin: auto;
-            background: rgb(255, 255, 255);
+            /* background: tomato; */
         }
 
         .sign_box{
-            width: 950px;
-            margin: auto;
-            height: 800px;
+            width: 700px;
+            margin: 5px auto;
+            height: 750px;
             background: #fff;
-            box-shadow: 10px 20px 50px rgba(58, 58, 58, 0.3);
+            box-shadow: 10px 20px 50px rgba(0,0,0,0.3);
             border-radius: 30px;
         }
 
         .s_title > h1{
+
             text-align: center;
-            border-bottom: 1px solid gray;
+
             background: linear-gradient(
                     90deg,
                     rgb(153, 152, 152) 0%,
                     rgba(129, 126, 126, 1) 100%
             );
+
             border-radius: 30px 30px 0px 0px;
-            line-height: 65px;
-            height: 65px;
+            height: 42px;
+            font-size: 30px;
             color: #fff;
         }
 
         .sign_container{
             width: 650px;
-            margin: 10px auto;
+            margin: 30px auto;
             /* background: beige; */
-            height: 700px;
+            height: 500px;
             text-align: center;
+
         }
 
         .sign_container > form > div{
-            padding-bottom: 20px;
+            padding-bottom: 15px;
             /* background: yellow; */
         }
 
-        input,
+        /* input,
         select{
-            width: 350px;
-            height: 40px;
+            width: 400px;
+            height: 35px;
             text-align: center;
             font-size: 20px;
             border-radius: 35px;
+        } */
+
+        input,
+        select{
+            display: block;
+            margin: auto;
+            margin-bottom: 3px;
+            padding: 5px;
+            border: 1px solid lightgray;
+            border-radius: 15px;
+            min-width: 50%;
+            min-height: 40px;
+            text-align: center;
         }
 
         .agreement{
+            /* background: violet; */
             width: 100%;
-            height: 90px;
+            height: 20px;
+            margin: auto;
+            justify-content: center;
+            display: flex;
+            /* background: tomato; */
         }
 
-        #button {
-            width: 50%;
-            background-color: rgb(131, 143, 143);
-            border-color: transparent;
-            color: white;
-            font-weight: bold;
+        #agree_box{
+            width: 20px;
+            height: 20px;
+            margin: -10px 0px 0px 20px;
+
         }
+
+        /* #create_button {
+                justify-content: center;
+                align-items: center;
+                background-color: rgb(131, 143, 143);
+                color: white;
+                border-radius: 35px;
+                padding: 15px 20px;
+                font-size: 20px;
+            } */
 
         .btn_basics {
             position: relative;
             border: none;
+            margin-top: 30px;
             margin-bottom: 5px;
             padding: 10px;
-            min-width: 100px;
+            min-width: 200px;
             min-height: 50px;
             background: linear-gradient(
                     90deg,
@@ -116,6 +150,7 @@
             border-radius: 1000px;
             font-weight: 700;
             transition: 0.3s;
+            color: #fff;
         }
 
         .btn_basics:hover {
@@ -132,79 +167,96 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: ring 2s;
+            animation: ring 1s;
         }
-        #check{ color:#fff; position:absolute; bottom:7px; left:10px; font:400 11px/15px 'Nanum Gothic','돋움'; }
+
+        h4{
+            font-size: 20px;
+        }
+
+        h5{
+            font-size: 15px;
+        }
+
+
 
     </style>
+
+
 </head>
 
 <body>
 <div class="wrap">
+    <div th:insert="/nav.html :: header_fragment">space for nav</div>
     <br>
     <br>
+
     <div class="block1">
         <div class="head_icon">
-            <img src="./img/icon.svg" alt="">
+            <img src="../static/img/icon.svg" alt="">
         </div>
+
         <div class="sign_box">
             <div class="s_title">
-                <h1>SignUp</h1>
+                <h1>Sign Up</h1>
             </div>
+
             <div class="sign_container">
+
                 <!-- <form method="get" action="http://localhost/login.php"> test코드 -->
                 <form th:action="@{/signUp}" method="post" id="sign_up_form" th:object="${member}" >
                     <div>
-                        <h5>Police station</h5>
-                        <div>
-                            <select id="policeStation" name="policeStation" required>
-                                <option value="02">Seoul</option>
-                                <option value="031">Kyonggi</option>
-                                <option value="032">Incheon</option>
-                                <option value="054">Busan</option>
-                                <option value="033">Gangwon</option>
-                            </select>
-                        </div>
+                        <h4>Police station</h4>
+                        <div><select name="dep" id="dep">
+                            <option value="02">Seoul</option>
+                            <option value="031">Kyonggi</option>
+                            <option value="032">Incheon</option>
+                            <option value="054">Busan</option>
+                            <option value="033">Gangwon</option>
+                        </select></div>
                     </div>
                     <div>
-                        <h5>User name</h5>
-                        <div><input id="userName" name="userName" type="text" placeholder="name" required /></div>
+                        <h4>User name</h4>
+                        <div><input type="text" name="name" id="name" placeholder="name"  required oninvalid="this.setCustomValidity('이름을 입력해주세요.')" onput="this.setCustomValidity()" /></div>
                     </div>
                     <div>
-                        <h5>Police ID</h5>
-                        <div><input id="policeId" name="policeId" type="text"  placeholder="xxxxxxxx" required/></div>
+                        <h4>Police ID</h4>
+                        <div><input type="text" name="police_id" id="police_id" placeholder="xxxxxxxx" required oninvalid="this.setCustomValidity('아이디를 입력해주세요.')" onput="this.setCustomValidity()"/></div>
                     </div>
                     <div >
-                        <h5>Phone number</h5>
-                        <div><input id="phoneNumber" name="phoneNumber"  type="text"  placeholder="010 0000 0000" required/></div>
+                        <h4>Phone number</h4>
+                        <div><input type="text" name="tel" id="tel" placeholder="010-0000-0000" required oninvalid="this.setCustomValidity('전화번호를 입력해주세요.')" onput="this.setCustomValidity()"/></div>
                     </div>
                     <div >
-                        <h5>e-mail</h5>
-                        <div><input id="email" name="email" type="text"  placeholder="@kyonggi.ac.kr"/></div>
+                        <h4>e-mail</h4>
+                        <div><input type="text" name="email" id="email" placeholder="@kyonggi.ac.kr" required oninvalid="this.setCustomValidity('이메일을 입력해주세요.')" onput="this.setCustomValidity()"/></div>
                     </div>
                     <div>
-                        <h5>password</h5>
-                        <div><input id="password" name="password" type="password"  placeholder="" required/></div>
+                        <h4>password</h4>
+                        <div><input type="password" name="pwd" id="pwd" placeholder="" required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" onput="this.setCustomValidity()"/></div>
                     </div>
+                    <!-- 작성해도 뜨는 오류 -->
 
                     <!-- policy 새창으로 띄우기 -->
                     <div class="agreement">
-                        <h5>I have read and accept the <a href="" onclick="terms()">Terms of Service</a> & <a href="" onclick="privacy()">Privacy Policy</a></h5>
-                        <input type="checkbox" name="agreeBox" id="agreeBox" required oninvalid="this.setCustomValidity('개인정보 수집 및 활용 동의해주세요.')" oninput="this.setCustomValidity('')" >
+                        <h5> I have read and accept the <a href="" onclick="terms()">Terms of Service</a> & <a href="" onclick="privacy()">Privacy Policy</a></h5>
+                        <div class="agree_box"><input type="checkbox" name="agree_box" id="agree_box"></div>
                     </div>
-                    <button id="button"  class="btn_basics" th:onclick="|location.href='@{/signup}'|" type="submit">Create Account</button>
+                    <button id="button" class="btn_basics" type="submit">Sign Up</button>
+
                 </form>
             </div>
         </div>
     </div>
 </div>
 
+
 <script>
     function terms(){
-        window.open("./termsofservice.html", "", "width=330, height=450");
+        window.open("./termsofservice.html", "", "width=350, height=450");
     }
     function privacy(){
-        window.open("./privacypolicy.html", "", "width=330, height=450");
+        window.open("./privacypolicy.html", "", "width=350, height=450");
     }
 </script>
 
