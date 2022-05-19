@@ -30,6 +30,10 @@
             padding: 10px;
             cursor: pointer;
         }
+        .filebox{
+            float:left;
+            margin-left:7px;
+        }
         .filebox input[type="file"] {
             position: absolute;
             width: 0;
@@ -42,6 +46,7 @@
         .filebox label {
             display: inline-block;
             padding: 10px 20px;
+            margin-right:7px;
             color: #999;
             vertical-align: middle;
             background-color: #fdfdfd;
@@ -62,6 +67,55 @@
             border-radius: 5px;
         }
 
+
+        .file_submit_btn{
+            float:right;
+            padding: 5px 13px 5px 13px;
+            margin-right:3px;
+            border: none;
+            font-family: "paybooc-Light", sans-serif;
+            border-radius: 15px;
+            font-family: "paybooc-Light", sans-serif;
+            border: 3px solid #a3a1a1;
+            color: #6e6e6e;
+        }
+
+        #submit_btn4 {
+            position: relative;
+            border: none;
+            margin-top: 30px;
+            margin-bottom: 5px;
+            padding: 10px;
+            min-width: 200px;
+            min-height: 50px;
+            background: linear-gradient(
+                    90deg,
+                    rgb(153, 152, 152) 0%,
+                    rgba(129, 126, 126, 1) 100%
+            );
+            border-radius: 1000px;
+            font-weight: 700;
+            transition: 0.3s;
+            color: #fff;
+        }
+
+        #submit_btn4:hover {
+            transform: scale(1.1);
+        }
+
+        #submit_btn4:hover::after {
+            content: "";
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            border: 5px solid #b9bdbc;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ring 1s;
+        }
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -77,10 +131,11 @@
 </div>
 <br>
 <br>
-    <div class="container py-3" >
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
 
-            <form th:action="@{/home}" method="post" th:object="${file}" enctype="multipart/form-data">
+<div class="container py-3" >
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+        <form th:action="@{/home}" method="post" th:object="${file}" enctype="multipart/form-data">
             <div class="col">
                 <div class="card mb-4 rounded-3 shadow-sm">
                     <div class="card-header py-3">
@@ -89,8 +144,8 @@
                     <div class="card-body">
                         <div class="file_picture"><img src="./img/Original_v.png" alt="" width="160" height="140"></div>
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li>Original Video 파일을 올려주세요.</li>
-                            <li>대략 설명내용.....</li>
+                            <li style="font-weight: bold;">Original Video 파일 업로드</li>
+                            <li style="font-size: 0.9em; line-height: 2;">⌜비교 기준이 될 영상⌟</li>
                         </ul>
                         <div class="filebox">
                             <label for="file_org">파일선택</label>
@@ -99,13 +154,14 @@
                             <script type="text/javascript" src="file_btn.js"></script>
                         </div>
                         <div style="text-align: center;">
-                            <button type="submit" id="submit_btn1"><b>SUBMIT</b></button>
+                            <button type="submit" id="submit_btn1" class="file_submit_btn"><b>⇪</b></button>
                         </div>
                     </div>
                 </div>
             </div>
-            </form>
+        </form>
 
+        <form th:action="@{/home}" method="post" th:object="${file}" enctype="multipart/form-data">
             <div class="col">
                 <div class="card mb-4 rounded-3 shadow-sm">
                     <div class="card-header py-3">
@@ -114,8 +170,8 @@
                     <div class="card-body">
                         <div class="file_picture"><img src="./img/Query_v.png" alt="" width="160" height="140"></div>
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li>Query Video 파일을 올려주세요.</li>
-                            <li>대략 설명내용.....</li>
+                            <li style="font-weight: bold;">Query Video 파일 업로드</li>
+                            <li style="font-size: 0.9em; line-height: 2;">⌜영상 비교를 시행할 때 꼭 들어가야 하는 구간⌟</li>
                         </ul>
                         <div class="filebox">
                             <label for="file_que">파일선택</label>
@@ -123,10 +179,16 @@
                             <input class="upload-name_que" value="선택된 파일 없음">
                             <script type="text/javascript" src="file_btn.js"></script>
                         </div>
+                        <div style="text-align: center;" >
+                            <button type="submit" id="submit_btn2" class="file_submit_btn"><b>⇪</b></button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </form>
 
+
+        <form th:action="@{/home}" method="post" th:object="${file}" enctype="multipart/form-data">
             <div class="col">
                 <div class="card mb-4 rounded-3 shadow-sm">
                     <div class="card-header py-3">
@@ -135,8 +197,8 @@
                     <div class="card-body">
                         <div class="file_picture"><img src="./img/Compare_v.png" alt="" width="160" height="140"></div>
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li>Compare Video 파일을 올려주세요.</li>
-                            <li>대략 설명내용.....</li>
+                            <li style="font-weight: bold;">Compare Video 파일 업로드</li>
+                            <li style="font-size: 0.9em; line-height: 2;">⌜기준 영상과 비교할 영상들⌟</li>
                         </ul>
                         <div class="filebox">
                             <label for="file_com">파일선택</label>
@@ -144,13 +206,23 @@
                             <input class="upload-name_com" value="선택된 파일 없음">
                             <script type="text/javascript" src="./js/file_btn.js"></script>
                         </div>
+                        <div style="text-align: center;">
+                            <button type="submit" id="submit_btn3" class="file_submit_btn"><b>⇪</b></button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
+
     </div>
-<br><br>
-<div style="text-align: center;">
 </div>
+
+
+<br>
+
+<div style="text-align: center;">
+    <button type="submit" id="submit_btn4"><b>SUBMIT</b></button>
+</div>
+
 </body>
 </html>
