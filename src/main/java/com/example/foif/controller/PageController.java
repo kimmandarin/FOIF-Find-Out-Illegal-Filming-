@@ -106,4 +106,9 @@ public class PageController {
         model.addAttribute("userDTO", userDTO);
         return "user_page";
     }
+
+    @RequestMapping("/toHome")
+    public String toHome(){
+        return "redirect:/homePage";
+    }
 }

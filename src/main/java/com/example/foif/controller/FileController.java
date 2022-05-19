@@ -32,7 +32,7 @@ public class FileController {
     @PostMapping(value = "/home")
     public String uploadFile(@RequestParam(value = "org_v", required = false) MultipartFile file) throws IllegalStateException, IOException{
 
-        if( !file.isEmpty() ) {
+        if(!file.isEmpty()) {
             System.out.println("OriginalFilename : " + file.getOriginalFilename());
             System.out.println("ContentType : " + file.getContentType());
             String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video" + file.getOriginalFilename();
