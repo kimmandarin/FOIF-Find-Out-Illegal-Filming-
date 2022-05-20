@@ -47,4 +47,42 @@ public class FileController {
 
         return "redirect:/homePage";
     }
+
+    @PostMapping(value = "/query")
+    public String queryUploadFile(@RequestParam(value = "que_v", required = false) MultipartFile file) throws IllegalStateException, IOException{
+
+        if(!file.isEmpty()) {
+            System.out.println("OriginalFilename : " + file.getOriginalFilename());
+            System.out.println("ContentType : " + file.getContentType());
+            String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video" + file.getOriginalFilename();
+            file.transferTo(new java.io.File(fullPath));
+
+            FileDTO fileDTO = new FileDTO();
+            fileDTO.setOriginFileName(file.getOriginalFilename());
+            fileDTO.setFullPath(fullPath);
+
+            fileService.joinFIle(fileDTO);
+        }
+
+        return "redirect:/homePage";
+    }
+
+    @PostMapping(value = "/compare")
+    public String compareUploadFile(@RequestParam(value = "com_v", required = false) MultipartFile file) throws IllegalStateException, IOException{
+
+        if(!file.isEmpty()) {
+            System.out.println("OriginalFilename : " + file.getOriginalFilename());
+            System.out.println("ContentType : " + file.getContentType());
+            String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video" + file.getOriginalFilename();
+            file.transferTo(new java.io.File(fullPath));
+
+            FileDTO fileDTO = new FileDTO();
+            fileDTO.setOriginFileName(file.getOriginalFilename());
+            fileDTO.setFullPath(fullPath);
+
+            fileService.joinFIle(fileDTO);
+        }
+
+        return "redirect:/homePage";
+    }
 }
