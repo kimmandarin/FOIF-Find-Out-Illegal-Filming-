@@ -1,41 +1,31 @@
 import cv2
+def madeVidocap(a):
+    vidcap = cv2.VideoCapture(a)
+    length = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
+    width = int(vidcap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(vidcap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    fps = vidcap.get(cv2.CAP_PROP_FPS)
+    FPS= int("%d"%fps)
+    count=0
 
-# 영상의 의미지를 연속적으로 캡쳐할 수 있게 하는 class
-vidcap = cv2.VideoCapture('video\\abc.mp4')
+    while(vidcap.isOpened()):
+        ret, image = vidcap.read()
 
-length = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
-width = int(vidcap.get(cv2.CAP_PROP_FRAME_WIDTH))
-height = int(vidcap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-fps = vidcap.get(cv2.CAP_PROP_FPS)
-FPS= int("%d"%fps)
-print("length :", length)
-print("width :", width)
-print("height :", height)
-print("fps :", fps)
+        if(int(vidcap.get(1)) % int(FPS) == 0):
+            str1 = str(int(vidcap.get(1)))
+            cv2.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest (%d).jpg" % count, image)
+            count += 1
 
-count=0
+    vidcap.release()
 
-while (vidcap.isOpened()):
-    # read()는 grab()와 retrieve() 두 함수를 한 함수로 불러옴
-    # 두 함수를 동시에 불러오는 이유는 프레임이 존재하지 않을 때
-    # grab() 함수를 이용하여 return false 혹은 NULL 값을 넘겨 주기 때문
-    ret, image = vidcap.read()
-
-    if (int(vidcap.get(1)) % int(FPS)== 0):
-        print('Saved frame number : ' + str(int(vidcap.get(1))))
-        cv2.imwrite("video\\abc (%d).jpg" % count, image)
-        print('Saved frame%d.jpg' % count)
-        count += 1
-
-
-vidcap.release()
+    return "length : " + length + "width : " + width + "height : " + height + "fps : " +fps + "Saved frame number : " + str1 + "Saved frame%d.jpg" % count
 #
 # import cv2
 # import os
 #
 # print(cv2.__version__)
 # filepath = 'video\\abc.mp4'
-# video = cv2.VideoCapture(filepath) #'' 사이에 사용할 비디오 파일의 경로 및 이름을 넣어주도록 함
+# video = cv2.VideoCapture(filepath)
 #
 # if not video.isOpened():
 #     print("Could not Open :", filepath)

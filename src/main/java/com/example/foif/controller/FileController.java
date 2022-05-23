@@ -35,7 +35,7 @@ public class FileController {
         if(!file.isEmpty()) {
             System.out.println("OriginalFilename : " + file.getOriginalFilename());
             System.out.println("ContentType : " + file.getContentType());
-            String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video" + file.getOriginalFilename();
+            String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\original" + file.getOriginalFilename();
             file.transferTo(new java.io.File(fullPath));
 
             FileDTO fileDTO = new FileDTO();
@@ -54,7 +54,7 @@ public class FileController {
         if(!file.isEmpty()) {
             System.out.println("OriginalFilename : " + file.getOriginalFilename());
             System.out.println("ContentType : " + file.getContentType());
-            String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video" + file.getOriginalFilename();
+            String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\query" + file.getOriginalFilename();
             file.transferTo(new java.io.File(fullPath));
 
             FileDTO fileDTO = new FileDTO();
@@ -73,7 +73,7 @@ public class FileController {
         if(!file.isEmpty()) {
             System.out.println("OriginalFilename : " + file.getOriginalFilename());
             System.out.println("ContentType : " + file.getContentType());
-            String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video" + file.getOriginalFilename();
+            String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\compare" + file.getOriginalFilename();
             file.transferTo(new java.io.File(fullPath));
 
             FileDTO fileDTO = new FileDTO();
