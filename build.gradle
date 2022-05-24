@@ -27,6 +27,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	runtimeOnly 'mysql:mysql-connector-java'
+	implementation files('C:\\Users\\PC\\Downloads\\opencv\\build\\java\\opencv-455.jar')
+	implementation files('C:\\Users\\PC\\Downloads\\opencv\\build\\java\\x64\\opencv_java455.dll')
 }
 
 tasks.named('test') {

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import cv2
 def madeVidocap(a):
     vidcap = cv2.VideoCapture(a)
