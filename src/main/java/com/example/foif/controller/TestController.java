@@ -1,10 +1,9 @@
 package com.example.foif.controller;
 
-import com.example.foif.algorithm.OpenCVTest;
+import com.example.foif.algorithm.VideoToImage;
 import org.python.core.PyFunction;
 import org.python.core.PyInteger;
 import org.python.core.PyObject;
-import org.python.core.PyString;
 import org.python.util.PythonInterpreter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,12 +39,12 @@ public class TestController {
 //        interpreter.execfile("src/main/python/Video_To_Image-master/main.py");
 //        PyFunction pyFunction = interpreter.get("madeVidocap", PyFunction.class);
 //
-        String str = "C:\\\\Users\\\\PC\\\\Desktop\\\\foif\\\\src\\\\main\\\\resources\\\\static\\\\video\\\\originaltest.mp4";
+        String str = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest.mp4";
 //
 //        PyObject pyObject = pyFunction.__call__(new PyString(str));
 //        System.out.println(pyObject.toString());
-        OpenCVTest openCVTest = new OpenCVTest();
-        openCVTest.doTes(str);
+        VideoToImage videoToImage = new VideoToImage();
+        videoToImage.videoToImage(str);
 
         return "redirect:/homePage";
     }
