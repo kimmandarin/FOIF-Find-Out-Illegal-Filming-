@@ -51,16 +51,15 @@ public class CompareVideo {
                 Mat query = new Mat();
                 Mat test = new Mat();
                 query = imgcodecs.imread("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + (query_point + 1) + ".jpg");
-                test = imgcodecs.imread("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\comparetest" + (x + compare_point) + ".jpg");
+                test = imgcodecs.imread("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\comparetest" + ((int)x + compare_point) + ".jpg");
                 List<Mat> imgs = new ArrayList<>();
                 imgs.add(query);
                 imgs.add(test);
                 System.out.println("Test 1번 : " + imgs.get(0));
                 System.out.println("Test 2번 : " + imgs.get(1));
-                int i = 0;
                 List<Mat> hists = new ArrayList<>();
                 Mat hist = new Mat();
-                while (!imgs.isEmpty()) {
+                for (int i = 0; i < imgs.size(); i++) {
                     List<Mat> hsv = new ArrayList<>();
                     Mat hsvTemp = new Mat();
                     imgproc.cvtColor(imgs.get(i), hsvTemp, imgproc.COLOR_BGR2HSV);
@@ -72,7 +71,6 @@ public class CompareVideo {
                     Core core = new Core();
                     core.normalize(hist, hist, 0f, 1f, core.NORM_MINMAX);
                     hists.add(hist);
-                    i++;
                 }
                 query = hists.get(0);
                 test = hists.get(1);
