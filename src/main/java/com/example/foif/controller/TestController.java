@@ -1,5 +1,6 @@
 package com.example.foif.controller;
 
+import com.example.foif.algorithm.CompareVideo;
 import com.example.foif.algorithm.VideoToImage;
 import org.python.core.PyFunction;
 import org.python.core.PyInteger;
@@ -15,19 +16,8 @@ public class TestController {
 
     @GetMapping("/pytest")
     public String pytest(){
-        System.setProperty("python.import.site", "false");
-        interpreter = new PythonInterpreter();
-        interpreter.execfile("src/main/python/test.py");
-        interpreter.exec("print(testFunc(5,10))");
-
-        PyFunction pyFunction = interpreter.get("testFunc", PyFunction.class);
-
-        int a = 10;
-        int b = 20;
-
-        PyObject pyObject =  pyFunction.__call__(new PyInteger(a), new PyInteger(b));
-        System.out.println(pyObject.toString());
-
+        CompareVideo compareVideo = new CompareVideo();
+        compareVideo.compareVideo(183, 183);
         return "redirect:/homePage";
     }
 
@@ -39,7 +29,7 @@ public class TestController {
 //        interpreter.execfile("src/main/python/Video_To_Image-master/main.py");
 //        PyFunction pyFunction = interpreter.get("madeVidocap", PyFunction.class);
 //
-        String str = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest.mp4";
+        String str = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\comparetest.mp4";
 //
 //        PyObject pyObject = pyFunction.__call__(new PyString(str));
 //        System.out.println(pyObject.toString());

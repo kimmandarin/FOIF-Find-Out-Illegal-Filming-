@@ -27,36 +27,38 @@ public class VideoToImage {
             Mat mat = new Mat();
             videoCapture.read(mat);
             if (0 < minutes && minutes < 5) {
-                if ((int) videoCapture.get(1) % (int) fps / 3 == 0) {
+                if (((int)videoCapture.get(1)) % (((int)fps)/3) == 0) {
                     imgcodecs.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + count + ".jpg", mat);
                     count += 1;
                 }
             }
             else if(5 <= minutes && minutes < 8) {
-                if ((int) videoCapture.get(1) % (int) fps / 2 == 0) {
+                if (((int)videoCapture.get(1)) % (((int) fps) / 2) == 0) {
                     imgcodecs.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + count + ".jpg", mat);
                     count += 1;
                 }
             }
             else if(8 <= minutes && minutes < 15){
-                if ((int) videoCapture.get(1) % (int)fps  == 0) {
+                if (((int)videoCapture.get(1)) % ((int)fps)  == 0) {
                     imgcodecs.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + count + ".jpg", mat);
                     count += 1;
                 }
             }
             else if(15 <= minutes && minutes < 20){
-                if ((int) videoCapture.get(1) % (int)fps*2  == 0) {
+                if (((int)videoCapture.get(1)) % (((int)fps)*2)  == 0) {
                     imgcodecs.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + count + ".jpg", mat);
                     count += 1;
                 }
             }
             else{
-                if ((int) videoCapture.get(1) % (int)fps*3  == 0) {
+                if (((int)videoCapture.get(1)) % (((int)fps)*3)  == 0) {
                     imgcodecs.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + count + ".jpg", mat);
                     count += 1;
                 }
             }
         }
         videoCapture.release();
+//        System.exit(0);
+//        return;
     }
 }
