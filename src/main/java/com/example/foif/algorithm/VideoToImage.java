@@ -11,7 +11,8 @@ public class VideoToImage {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
-    public void videoToImage(String str) {
+
+    public void videoToImage(String str, String filePath) {
         VideoCapture videoCapture = new VideoCapture();
         videoCapture.open(str);
         Imgcodecs imgcodecs = new Imgcodecs();
@@ -28,7 +29,7 @@ public class VideoToImage {
             videoCapture.read(mat);
             if (0 < minutes && minutes < 5) {
                 if (((int)videoCapture.get(1)) % (((int)fps)/3) == 0) {
-                    imgcodecs.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + count + ".jpg", mat);
+                    imgcodecs.imwrite(filePath + count + ".jpg", mat);
                     count += 1;
                 }
             }
@@ -57,8 +58,10 @@ public class VideoToImage {
                 }
             }
         }
+        System.out.println("Test 1");
         videoCapture.release();
-//        System.exit(0);
-//        return;
+        System.out.println("Test 2");
+        System.exit(0);
+        return;
     }
 }

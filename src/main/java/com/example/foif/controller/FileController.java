@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -30,7 +33,10 @@ public class FileController {
     }
 
     @PostMapping(value = "/home")
-    public String uploadFile(@RequestParam(value = "org_v", required = false) MultipartFile file) throws IllegalStateException, IOException{
+    public String uploadFile(@RequestParam(value = "org_v", required = false) MultipartFile file,
+                             HttpServletRequest request) throws IllegalStateException, IOException{
+
+        HttpSession session = request.getSession();
 
         if(!file.isEmpty()) {
             System.out.println("OriginalFilename : " + file.getOriginalFilename());
@@ -43,13 +49,18 @@ public class FileController {
             fileDTO.setFullPath(fullPath);
 
             fileService.joinFIle(fileDTO);
+
+            session.setAttribute("originalId", fileDTO.getId());
         }
 
         return "redirect:/homePage";
     }
 
     @PostMapping(value = "/query")
-    public String queryUploadFile(@RequestParam(value = "que_v", required = false) MultipartFile file) throws IllegalStateException, IOException{
+    public String queryUploadFile(@RequestParam(value = "que_v", required = false) MultipartFile file,
+                                  HttpServletRequest request) throws IllegalStateException, IOException{
+
+        HttpSession session = request.getSession();
 
         if(!file.isEmpty()) {
             System.out.println("OriginalFilename : " + file.getOriginalFilename());
@@ -62,13 +73,17 @@ public class FileController {
             fileDTO.setFullPath(fullPath);
 
             fileService.joinFIle(fileDTO);
+
+            session.setAttribute("queryId", fileDTO.getId());
         }
 
         return "redirect:/homePage";
     }
 
     @PostMapping(value = "/compare")
-    public String compareUploadFile(@RequestParam(value = "com_v", required = false) MultipartFile file) throws IllegalStateException, IOException{
+    public String compareUploadFile(@RequestParam(value = "com_v", required = false) MultipartFile file,
+                                    HttpServletRequest request) throws IllegalStateException, IOException{
+        HttpSession session = request.getSession();
 
         if(!file.isEmpty()) {
             System.out.println("OriginalFilename : " + file.getOriginalFilename());
@@ -81,6 +96,9 @@ public class FileController {
             fileDTO.setFullPath(fullPath);
 
             fileService.joinFIle(fileDTO);
+
+            session.setAttribute("compareId", fileDTO.getId());
+
         }
 
         return "redirect:/homePage";

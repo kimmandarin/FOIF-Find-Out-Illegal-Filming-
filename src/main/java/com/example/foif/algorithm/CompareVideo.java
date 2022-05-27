@@ -11,7 +11,7 @@ public class CompareVideo {
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
-    public void compareVideo(int query_number, int compare_number) {
+    public void compareVideo(int query_number, int compare_number, String originalFilePath, String compareFilePath) {
         System.out.println("함수 시작 Test");
         double corr = 0.47;
         double inter = 0.48;
@@ -50,8 +50,8 @@ public class CompareVideo {
                 Imgproc imgproc = new Imgproc();
                 Mat query = new Mat();
                 Mat test = new Mat();
-                query = imgcodecs.imread("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + (query_point + 1) + ".jpg");
-                test = imgcodecs.imread("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\comparetest" + ((int)x + compare_point) + ".jpg");
+                query = imgcodecs.imread(originalFilePath + (query_point + 1) + ".jpg");
+                test = imgcodecs.imread(compareFilePath + ((int)x + compare_point) + ".jpg");
                 List<Mat> imgs = new ArrayList<>();
                 imgs.add(query);
                 imgs.add(test);

@@ -1,7 +1,10 @@
 package com.example.foif.controller;
 
+import com.example.foif.algorithm.CompareVideo;
+import com.example.foif.algorithm.VideoToImage;
 import com.example.foif.domain.MemberDTO;
 import com.example.foif.domain.UserDTO;
+import com.example.foif.service.FileService;
 import com.example.foif.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,14 +12,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class PageController {
 
     MemberService memberService;
+    FileService fileService;
 
     @Autowired
-    public PageController(MemberService memberService){
+    public PageController(MemberService memberService, FileService fileService){
         this.memberService = memberService;
+        this.fileService = fileService;
     }
 
     @RequestMapping(value = "/test")
@@ -61,6 +69,32 @@ public class PageController {
     @RequestMapping(value = "/result")
     public String resultPage(){
         return "result_page";
+    }
+
+    @RequestMapping(value = "/sessiontest")
+    public String sessionTest(HttpServletRequest request){
+        HttpSession session = request.getSession();
+
+        Long originalId = (Long)session.getAttribute("originalId");
+        Long queryId = (Long)session.getAttribute("queryId");
+        Long compareId = (Long)session.getAttribute("compareId");
+
+        System.out.println(fileService.fileInfo(originalId));
+        System.out.println(fileService.fileInfo(queryId));
+        System.out.println(fileService.fileInfo(compareId));
+
+        String originalFilePath = fileService.fileInfo(originalId);
+        String compareFilePath = fileService.fileInfo(compareId);
+        VideoToImage videoToImage = new VideoToImage();
+//        videoToImage.videoToImage(originalFilePath, originalFilePath);
+
+        String str1 = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest";
+        String str2 = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\comparetest";
+
+        CompareVideo compareVideo = new CompareVideo();
+        compareVideo.compareVideo(183, 183, str1, str2);
+
+        return "/home";
     }
 
     @GetMapping(value = "/user")
