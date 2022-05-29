@@ -21,6 +21,7 @@ public class VideoToImage {
         double height = videoCapture.get(Videoio.CAP_PROP_FRAME_HEIGHT);
         double fps = videoCapture.get(Videoio.CAP_PROP_FPS);
         double duration = length / fps;
+        int sec = ((int)length) / ((int)fps);
         int minutes = (int) duration / 60;
         int count = 0;
 
@@ -31,37 +32,52 @@ public class VideoToImage {
                 if (((int)videoCapture.get(1)) % (((int)fps)/3) == 0) {
                     imgcodecs.imwrite(filePath + count + ".jpg", mat);
                     count += 1;
+                    if(count >= (sec * 3) ){
+                        videoCapture.release();
+                        break;
+                    }
                 }
             }
             else if(5 <= minutes && minutes < 8) {
                 if (((int)videoCapture.get(1)) % (((int) fps) / 2) == 0) {
-                    imgcodecs.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + count + ".jpg", mat);
+                    imgcodecs.imwrite(filePath + count + ".jpg", mat);
                     count += 1;
+                    if(count >= (sec * 2) ){
+                        videoCapture.release();
+                        break;
+                    }
                 }
             }
             else if(8 <= minutes && minutes < 15){
                 if (((int)videoCapture.get(1)) % ((int)fps)  == 0) {
-                    imgcodecs.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + count + ".jpg", mat);
+                    imgcodecs.imwrite(filePath + count + ".jpg", mat);
                     count += 1;
+                    if(count >= sec ){
+                        videoCapture.release();
+                        break;
+                    }
                 }
             }
             else if(15 <= minutes && minutes < 20){
                 if (((int)videoCapture.get(1)) % (((int)fps)*2)  == 0) {
-                    imgcodecs.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + count + ".jpg", mat);
+                    imgcodecs.imwrite(filePath + count + ".jpg", mat);
                     count += 1;
+                    if(count >= (sec / 2) ){
+                        videoCapture.release();
+                        break;
+                    }
                 }
             }
             else{
                 if (((int)videoCapture.get(1)) % (((int)fps)*3)  == 0) {
-                    imgcodecs.imwrite("C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest" + count + ".jpg", mat);
+                    imgcodecs.imwrite(filePath + count + ".jpg", mat);
                     count += 1;
+                    if(count >= (sec / 3) ){
+                        videoCapture.release();
+                        break;
+                    }
                 }
             }
         }
-        System.out.println("Test 1");
-        videoCapture.release();
-        System.out.println("Test 2");
-        System.exit(0);
-        return;
     }
 }

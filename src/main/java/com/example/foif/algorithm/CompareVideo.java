@@ -1,5 +1,6 @@
 package com.example.foif.algorithm;
 
+import com.example.foif.domain.Result;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -11,14 +12,19 @@ public class CompareVideo {
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
-    public void compareVideo(int query_number, int compare_number, String originalFilePath, String compareFilePath) {
-        System.out.println("함수 시작 Test");
+    public void compareVideo(int query_number, int compare_number, String originalFilePath, String compareFilePath, Result result) {
         double corr = 0.47;
         double inter = 0.48;
         double bhatt = 0.52;
         double sim = 0;
         double a = 0;
         int contin_f = 0;
+        int index = 0;
+        String[] resultStr = new String[10];
+        String[] correlStr = new String[10];
+        String[] intersectStr = new String[10];
+        String[] bhattacharyyaStr = new String[10];
+
 
         if (compare_number >= 0 && compare_number < 200) {
             contin_f = 21;
@@ -37,15 +43,10 @@ public class CompareVideo {
         double x = 0;
 
         if (compare_number < contin_f) {
-            System.out.println("Test 1");
-            System.out.println("Compare_Number : " + compare_number);
-            System.out.println("contin_f : " + contin_f);
             x = 1;
         } else {
-            System.out.println("Test 2");
             x = compare_number / 2;
             while (query_point < query_number + 1 && compare_point < compare_number + 1) {
-                System.out.println("Test 3");
                 Imgcodecs imgcodecs = new Imgcodecs();
                 Imgproc imgproc = new Imgproc();
                 Mat query = new Mat();
@@ -55,8 +56,6 @@ public class CompareVideo {
                 List<Mat> imgs = new ArrayList<>();
                 imgs.add(query);
                 imgs.add(test);
-                System.out.println("Test 1번 : " + imgs.get(0));
-                System.out.println("Test 2번 : " + imgs.get(1));
                 List<Mat> hists = new ArrayList<>();
                 Mat hist = new Mat();
                 for (int i = 0; i < imgs.size(); i++) {
@@ -84,17 +83,24 @@ public class CompareVideo {
                 }
                 ret_I = ret_I / sumDiffSee;
                 double ret_B = imgproc.compareHist(query, hist, imgproc.HISTCMP_BHATTACHARYYA);
-                System.out.println("비교전: query_number = " + query_number + "\nc_n = " + compare_number + " " + contin_f + "\nquery_point = " + query_point +
+                System.out.println("비교 전: query_number = " + query_number + "\nc_n = " + compare_number + " " + contin_f + "\nquery_point = " + query_point +
                         "\ncompare_point = " + compare_point + "\na = " + a + "\nx = " + x);
                 if (ret_C >= corr && ret_I >= inter && ret_B <= bhatt) {
-                    System.out.println("\n\n" + (sim + 1) + "번 유사. \nquery영상중" + (query_point + 1) + "번째 프레임과 test영상 중 " + (x + compare_point) + "번째 프레임이 유사합니다.");
-                    System.out.println("CORREL : " + ret_C);
-                    System.out.println("INTERSECT : " + ret_I);
-                    System.out.println("BHATTACHARYYA : " + ret_B);
+                    String temp = (sim + 1) + "번 유사. \nquery 영상 중 " + (query_point + 1) + "번째 프레임과 test 영상 중 " + (x + compare_point) + "번째 프레임이 유사합니다.***";
+                    resultStr[index] = temp;
+                    correlStr[index] = "CORREL : " + ret_C;
+                    intersectStr[index] = "INTERSECT : " + ret_I;
+                    bhattacharyyaStr[index] = "BHATTACHARYYA : " + ret_B;
+
+                    result.setResult(resultStr);
+                    result.setCorrel(correlStr);
+                    result.setIntersect(intersectStr);
+                    result.setBhattacharyya(bhattacharyyaStr);
 
                     sim += 1;
                     query_point += 1;
                     compare_point += 1;
+                    index += 1;
                 } else {
                     compare_point += 1;
                 }
@@ -129,10 +135,10 @@ public class CompareVideo {
                     x = compare_number / 2 + a * contin_f;
                 }
                 if (sim >= 10) {
-                    System.out.println("\n\n\n*******두 영상은 동일한 영상입니다.*********");
+                    result.setCheck("*******두 영상은 동일한 영상입니다.*********");
                     break;
                 }
-                System.out.println("비교후: query_number = " + query_number + "\nc_n = " + compare_number + " " + contin_f + "\nquery_point = " + query_point +
+                System.out.println("비교 후: query_number = " + query_number + "\nc_n = " + compare_number + " " + contin_f + "\nquery_point = " + query_point +
                         "\ncompare_point = " + compare_point + "\na = " + a + "\nx = " + x);
             }
         }

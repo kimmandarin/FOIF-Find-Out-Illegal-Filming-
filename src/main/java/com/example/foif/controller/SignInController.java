@@ -18,8 +18,6 @@ public class SignInController {
 
     @PostMapping("/signIn")
     public String form(@ModelAttribute SignIn signIn){
-        System.out.println(signIn.getEmail());
-        System.out.println(signIn.getPassword());
         return "redirect:/homePage";
     }
 }

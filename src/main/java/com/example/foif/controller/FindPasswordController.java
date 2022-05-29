@@ -26,8 +26,6 @@ public class FindPasswordController {
 
     @PostMapping(value = "/findpassword")
     public String form(@ModelAttribute("findPwd") FindPwd findPwd){
-        System.out.println(findPwd.getUsername());
-        System.out.println(findPwd.getEmail());
         memberService.findPassword(findPwd.getUsername());
         return "findPW";
     }

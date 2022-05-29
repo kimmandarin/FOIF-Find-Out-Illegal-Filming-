@@ -35,13 +35,6 @@ public class SignUpController {
     public String form(@Validated @ModelAttribute("member") Member member) {
         MemberDTO memberDTO = new MemberDTO();
 
-        System.out.println(member.getEmail());
-        System.out.println(member.getPoliceId());
-        System.out.println(member.getPhoneNumber());
-        System.out.println(member.getUserName());
-        System.out.println(member.getPassword());
-        System.out.println(member.getPoliceStation());
-
         String encodedPassword = passwordEncoder.encode(member.getPassword());
 
         memberDTO.setEmail(member.getEmail());

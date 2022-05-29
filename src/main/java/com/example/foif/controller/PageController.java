@@ -3,6 +3,7 @@ package com.example.foif.controller;
 import com.example.foif.algorithm.CompareVideo;
 import com.example.foif.algorithm.VideoToImage;
 import com.example.foif.domain.MemberDTO;
+import com.example.foif.domain.Result;
 import com.example.foif.domain.UserDTO;
 import com.example.foif.service.FileService;
 import com.example.foif.service.MemberService;
@@ -34,25 +35,21 @@ public class PageController {
 
     @RequestMapping(value = "/signup")
     public String signup() {
-        System.out.println("signUp 페이지");
         return "signUp";
     }
 
     @RequestMapping(value = "/signin")
     public String signIn() {
-        System.out.println("signIn 페이지");
         return "signIn";
     }
 
     @RequestMapping(value = "/homePage")
     public String testIndex() {
-        System.out.println("Home 페이지");
         return "home";
     }
 
     @RequestMapping(value = "/findpwd")
     public String findPwd(){
-        System.out.println("비밀번호 찾기 페이지");
         return "findPW";
     }
 
@@ -74,25 +71,40 @@ public class PageController {
     @RequestMapping(value = "/sessiontest")
     public String sessionTest(HttpServletRequest request){
         HttpSession session = request.getSession();
+        Result result = new Result();
 
         Long originalId = (Long)session.getAttribute("originalId");
         Long queryId = (Long)session.getAttribute("queryId");
         Long compareId = (Long)session.getAttribute("compareId");
 
-        System.out.println(fileService.fileInfo(originalId));
-        System.out.println(fileService.fileInfo(queryId));
-        System.out.println(fileService.fileInfo(compareId));
+        String strTemp1 = fileService.fileInfo(originalId);
+        String strTemp2 = fileService.fileInfo(compareId);
+        String strTemp3 = fileService.fileInfo(queryId);
 
-        String originalFilePath = fileService.fileInfo(originalId);
-        String compareFilePath = fileService.fileInfo(compareId);
+        String originalFilePath = strTemp1.substring(0, strTemp1.length()-4);
+        String compareFilePath = strTemp2.substring(0, strTemp2.length()-4);
+        String queryFilePath = strTemp3.substring(0, strTemp3.length()-4);
+
         VideoToImage videoToImage = new VideoToImage();
-//        videoToImage.videoToImage(originalFilePath, originalFilePath);
-
-        String str1 = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\originaltest";
-        String str2 = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\comparetest";
+        videoToImage.videoToImage(strTemp1, originalFilePath);
+        videoToImage.videoToImage(strTemp2, compareFilePath);
 
         CompareVideo compareVideo = new CompareVideo();
-        compareVideo.compareVideo(183, 183, str1, str2);
+        compareVideo.compareVideo(183, 183, originalFilePath, compareFilePath, result);
+
+        String[] resultStr = result.getResult();
+        String[] correlStr = result.getCorrel();
+        String[] intersectStr = result.getIntersect();
+        String[] bhattacharyyaStr = result.getBhattacharyya();
+
+        for(int i = 0; i < result.getResult().length; i++){
+            System.out.println(resultStr[i]);
+            System.out.println(correlStr[i]);
+            System.out.println(intersectStr[i]);
+            System.out.println(bhattacharyyaStr[i]);
+        }
+
+        System.out.println(result.getCheck());
 
         return "/home";
     }
@@ -100,12 +112,6 @@ public class PageController {
     @GetMapping(value = "/user")
     public String userPage(Model model){
         MemberDTO memberDTO = memberService.userInfo();
-
-        System.out.println("PoliceStation : " + memberDTO.getPoliceStation());
-        System.out.println("PoliceId : " + memberDTO.getPoliceId());
-        System.out.println("email : " + memberDTO.getEmail());
-        System.out.println("Username : " + memberDTO.getUserName());
-        System.out.println("PhoneNumber : " + memberDTO.getPhoneNumber());
 
         UserDTO userDTO = new UserDTO();
 

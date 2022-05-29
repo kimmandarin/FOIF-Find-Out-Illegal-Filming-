@@ -27,7 +27,6 @@ public class FileController {
 
     @GetMapping(value = "/home")
     public String uploadFileModel(Model model){
-        System.out.println("Model Test");
         model.addAttribute("file", new File());
         return "home";
     }
@@ -39,8 +38,6 @@ public class FileController {
         HttpSession session = request.getSession();
 
         if(!file.isEmpty()) {
-            System.out.println("OriginalFilename : " + file.getOriginalFilename());
-            System.out.println("ContentType : " + file.getContentType());
             String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\original" + file.getOriginalFilename();
             file.transferTo(new java.io.File(fullPath));
 
@@ -63,8 +60,6 @@ public class FileController {
         HttpSession session = request.getSession();
 
         if(!file.isEmpty()) {
-            System.out.println("OriginalFilename : " + file.getOriginalFilename());
-            System.out.println("ContentType : " + file.getContentType());
             String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\query" + file.getOriginalFilename();
             file.transferTo(new java.io.File(fullPath));
 
@@ -86,8 +81,6 @@ public class FileController {
         HttpSession session = request.getSession();
 
         if(!file.isEmpty()) {
-            System.out.println("OriginalFilename : " + file.getOriginalFilename());
-            System.out.println("ContentType : " + file.getContentType());
             String fullPath = "C:\\Users\\PC\\Desktop\\foif\\src\\main\\resources\\static\\video\\compare" + file.getOriginalFilename();
             file.transferTo(new java.io.File(fullPath));
 
