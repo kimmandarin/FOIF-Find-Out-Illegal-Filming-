@@ -32,7 +32,7 @@ public class VideoToImage {
                 if (((int)videoCapture.get(1)) % (((int)fps)/3) == 0) {
                     imgcodecs.imwrite(filePath + count + ".jpg", mat);
                     count += 1;
-                    if(count >= (sec * 3) ){
+                    if(count >= 30 ){
                         videoCapture.release();
                         break;
                     }

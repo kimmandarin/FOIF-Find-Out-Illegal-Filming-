@@ -24,6 +24,7 @@ public class CompareVideo {
         String[] correlStr = new String[10];
         String[] intersectStr = new String[10];
         String[] bhattacharyyaStr = new String[10];
+        String[] realResult = new String[40];
 
 
         if (compare_number >= 0 && compare_number < 200) {

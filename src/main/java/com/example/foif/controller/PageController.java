@@ -68,8 +68,8 @@ public class PageController {
         return "result_page";
     }
 
-    @RequestMapping(value = "/sessiontest")
-    public String sessionTest(HttpServletRequest request){
+    @GetMapping(value = "/getresult")
+    public String sessionTest(HttpServletRequest request, Model model){
         HttpSession session = request.getSession();
         Result result = new Result();
 
@@ -90,7 +90,7 @@ public class PageController {
         videoToImage.videoToImage(strTemp2, compareFilePath);
 
         CompareVideo compareVideo = new CompareVideo();
-        compareVideo.compareVideo(183, 183, originalFilePath, compareFilePath, result);
+        compareVideo.compareVideo(30, 30, originalFilePath, compareFilePath, result);
 
         String[] resultStr = result.getResult();
         String[] correlStr = result.getCorrel();
@@ -105,8 +105,8 @@ public class PageController {
         }
 
         System.out.println(result.getCheck());
-
-        return "/home";
+        model.addAttribute("result", result);
+        return "/result_page";
     }
 
     @GetMapping(value = "/user")

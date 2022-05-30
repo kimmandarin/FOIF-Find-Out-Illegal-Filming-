@@ -1,0 +1,120 @@
+@keyframes ring {
+    0% {
+        width: 50px;
+        height: 50px;
+        opacity: 0.5;
+    }
+    100% {
+        width: 150px;
+        height: 150px;
+        opacity: 0;
+    }
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+   
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    width: 1050px;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+
+.logo {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-weight: bolder;
+    font-size: 50px;
+    text-shadow:   3px 3px 8px rgb(131, 143, 143) ;
+}
+
+#button {
+  width: 180%;
+    background-color: rgb(131, 143, 143);
+    border-color: transparent;
+    color: white;
+    font-weight: bold;
+  
+}
+
+.account {
+    display: block;
+    margin-bottom: 3px;
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    min-width: 180%;
+    min-height: 50px;
+}
+
+.btn_basics {
+    position: relative;
+    border: none;
+    margin-bottom: 5px;
+    padding: 10px;
+    min-width: 100px;
+    min-height: 50px;
+    background: linear-gradient(
+            90deg,
+            rgb(153, 152, 152) 0%,
+            rgba(129, 126, 126, 1) 100%
+    );
+    border-radius: 1000px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn_basics:hover {
+    transform: scale(1.1);
+}
+
+.btn_basics:hover::after {
+    content: "";
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    border: 5px solid #b9bdbc;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 2s;
+}
+
+.text_center{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.exp {
+    width: 700px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px white;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.box{
+    transform: translate(-40%,0);
+}
