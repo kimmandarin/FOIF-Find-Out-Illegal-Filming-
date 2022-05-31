@@ -143,5 +143,13 @@ public class CompareVideo {
                         "\ncompare_point = " + compare_point + "\na = " + a + "\nx = " + x);
             }
         }
+        int temp = -1;
+        for(int i = 0; i < resultStr.length; i++){
+            realResult[++temp] = resultStr[i];
+            realResult[++temp] = correlStr[i];
+            realResult[++temp] = intersectStr[i];
+            realResult[++temp] = bhattacharyyaStr[i];
+        }
+        result.setRealResult(realResult);
     }
 }

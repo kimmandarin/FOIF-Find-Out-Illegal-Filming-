@@ -24,18 +24,8 @@
         <div class="box">
             <table class="table table-hover">
                 <tbody>
-                <tr th:each="resultset : ${result.result}">
+                <tr th:each="resultset : ${result.realResult}">
                     <td th:text="${resultset}"></td>
-                </tr>
-                <tr th:each="resultset : ${result.correl}">
-                    <td th:text="${resultset}"></td>
-                </tr>
-                <tr th:each="resultset : ${result.intersect}">
-                    <td th:text="${resultset}"></td>
-                </tr>
-                <tr th:each="resultset : ${result.bhattacharyya}">
-                    <td th:text="${resultset}"></td>
-                </tr>
                 <tr th:each="resultset : ${result}">
                     <td th:text="${result.check}"></td>
                 </tr>
