@@ -23,7 +23,6 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'commons-io:commons-io:2.8'
-	implementation group: 'org.python', name: 'jython', version: '2.7.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	runtimeOnly 'mysql:mysql-connector-java'

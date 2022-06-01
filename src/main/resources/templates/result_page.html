@@ -15,22 +15,23 @@
 <br>
 <br>
 <body>
-<div th:replace="/fragments/header :: header"></div>
 <div class="main">
     <div class="exp">
         <div class="logo">
             <p>Result Page</p>
         </div>
         <div class="box">
-            <table class="table table-hover">
-                <tbody>
-                <tr th:each="resultset : ${result.realResult}">
-                    <td th:text="${resultset}"></td>
-                <tr th:each="resultset : ${result}">
-                    <td th:text="${result.check}"></td>
-                </tr>
-                </tbody>
-            </table>
+            <div style=" width:100%; height:500px; overflow:auto">
+                <table class="table table-hover">
+                    <tbody>
+                    <tr th:each="resultset : ${result.realResult}">
+                        <td th:text="${resultset}"></td>
+                    <tr th:each="resultset : ${result}">
+                        <td th:text="${result.check}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <button id="button" class="btn_basics" type="button" th:onclick="|location.href='@{/home}'|"> Close</button>
     </div>

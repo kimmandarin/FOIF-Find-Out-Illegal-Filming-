@@ -97,14 +97,6 @@ public class PageController {
         String[] intersectStr = result.getIntersect();
         String[] bhattacharyyaStr = result.getBhattacharyya();
 
-        for(int i = 0; i < result.getResult().length; i++){
-            System.out.println(resultStr[i]);
-            System.out.println(correlStr[i]);
-            System.out.println(intersectStr[i]);
-            System.out.println(bhattacharyyaStr[i]);
-        }
-
-        System.out.println(result.getCheck());
         model.addAttribute("result", result);
         return "/result_page";
     }
