@@ -206,7 +206,7 @@
                 <form th:action="@{/signUp}" method="post" id="sign_up_form" th:object="${member}" >
                     <div>
                         <h4>Police station</h4>
-                        <div><select name="dep" id="dep">
+                        <div><select id="policeStation" name="policeStation" required>
                             <option value="02">Seoul</option>
                             <option value="031">Kyonggi</option>
                             <option value="032">Incheon</option>
@@ -216,32 +216,31 @@
                     </div>
                     <div>
                         <h4>User name</h4>
-                        <div><input type="text" name="name" id="name" placeholder="name"  required oninvalid="this.setCustomValidity('이름을 입력해주세요.')" onput="this.setCustomValidity()" /></div>
+                        <div><input id="userName" name="userName" type="text" placeholder="name" required /></div>
                     </div>
                     <div>
                         <h4>Police ID</h4>
-                        <div><input type="text" name="police_id" id="police_id" placeholder="xxxxxxxx" required oninvalid="this.setCustomValidity('아이디를 입력해주세요.')" onput="this.setCustomValidity()"/></div>
+                        <div><input id="policeId" name="policeId" type="text"  placeholder="xxxxxxxx" required/></div>
                     </div>
                     <div >
                         <h4>Phone number</h4>
-                        <div><input type="text" name="tel" id="tel" placeholder="010-0000-0000" required oninvalid="this.setCustomValidity('전화번호를 입력해주세요.')" onput="this.setCustomValidity()"/></div>
+                        <div><input id="phoneNumber" name="phoneNumber"  type="text"  placeholder="010 0000 0000" required/></div>
                     </div>
                     <div >
                         <h4>e-mail</h4>
-                        <div><input type="text" name="email" id="email" placeholder="@kyonggi.ac.kr" required oninvalid="this.setCustomValidity('이메일을 입력해주세요.')" onput="this.setCustomValidity()"/></div>
+                        <div><input id="email" name="email" type="text"  placeholder="@kyonggi.ac.kr"/></div>
                     </div>
                     <div>
                         <h4>password</h4>
-                        <div><input type="password" name="pwd" id="pwd" placeholder="" required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" onput="this.setCustomValidity()"/></div>
+                        <div><input id="password" name="password" type="password"  placeholder="" required/></div>
                     </div>
-                    <!-- 작성해도 뜨는 오류 -->
 
                     <!-- policy 새창으로 띄우기 -->
                     <div class="agreement">
                         <h5> I have read and accept the <a href="" onclick="terms()">Terms of Service & Privacy Policy</a> </h5>
                         <div class="agree_box"><input type="checkbox" name="agree_box" id="agree_box"></div>
                     </div>
-                    <button id="button" class="btn_basics" type="submit">Sign Up</button>
+                    <button id="button" class="btn_basics" th:onclick="|location.href='@{/signup}'|" type="submit">Sign Up</button>
 
                 </form>
             </div>

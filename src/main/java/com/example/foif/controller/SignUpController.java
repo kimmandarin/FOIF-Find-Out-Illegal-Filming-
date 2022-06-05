@@ -49,6 +49,6 @@ public class SignUpController {
         memberDTO.getRoles().add(role);
 
         memberService.joinMember(memberDTO);
-        return "signIn";
+        return "redirect:/test";
     }
 }
