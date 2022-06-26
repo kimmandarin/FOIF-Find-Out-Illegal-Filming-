@@ -42,7 +42,7 @@ public class VideoToImage {
                 if (((int)videoCapture.get(1)) % (((int) fps) / 2) == 0) {
                     imgcodecs.imwrite(filePath + count + ".jpg", mat);
                     count += 1;
-                    if(count >= (sec * 2) ){
+                    if(count >= 30 ){
                         videoCapture.release();
                         break;
                     }
@@ -52,7 +52,7 @@ public class VideoToImage {
                 if (((int)videoCapture.get(1)) % ((int)fps)  == 0) {
                     imgcodecs.imwrite(filePath + count + ".jpg", mat);
                     count += 1;
-                    if(count >= sec ){
+                    if(count >= 30 ){
                         videoCapture.release();
                         break;
                     }

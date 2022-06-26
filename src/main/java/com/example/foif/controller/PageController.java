@@ -86,11 +86,11 @@ public class PageController {
         String queryFilePath = strTemp3.substring(0, strTemp3.length()-4);
 
         VideoToImage videoToImage = new VideoToImage();
-        videoToImage.videoToImage(strTemp1, originalFilePath);
+        videoToImage.videoToImage(strTemp1, queryFilePath);
         videoToImage.videoToImage(strTemp2, compareFilePath);
 
         CompareVideo compareVideo = new CompareVideo();
-        compareVideo.compareVideo(30, 30, originalFilePath, compareFilePath, result);
+        compareVideo.compareVideo(30, 30, queryFilePath, compareFilePath, result);
 
         String[] resultStr = result.getResult();
         String[] correlStr = result.getCorrel();

@@ -52,46 +52,65 @@ public class CompareVideo {
                 Imgproc imgproc = new Imgproc();
                 Mat query = new Mat();
                 Mat test = new Mat();
-                query = imgcodecs.imread(originalFilePath + (query_point + 1) + ".jpg");
-                test = imgcodecs.imread(compareFilePath + ((int)x + compare_point) + ".jpg");
+                query = imgcodecs.imread(originalFilePath + query_point + ".jpg");
+                test = imgcodecs.imread(compareFilePath + compare_point + ".jpg");
                 List<Mat> imgs = new ArrayList<>();
-                imgs.add(query);
-                imgs.add(test);
-                List<Mat> hists = new ArrayList<>();
-                Mat hist = new Mat();
-                for (int i = 0; i < imgs.size(); i++) {
-                    List<Mat> hsv = new ArrayList<>();
-                    Mat hsvTemp = new Mat();
-                    imgproc.cvtColor(imgs.get(i), hsvTemp, imgproc.COLOR_BGR2HSV);
-                    hsv.add(hsvTemp);
-                    int hbins = 100, sbins = 256;
-                    MatOfInt histSize = new MatOfInt(hbins, sbins);
-                    MatOfFloat histRange = new MatOfFloat(0f, 180f, 0f, 256f);
-                    imgproc.calcHist(hsv, new MatOfInt(0, 1), new Mat(), hist, histSize, histRange);
-                    Core core = new Core();
-                    core.normalize(hist, hist, 0f, 1f, core.NORM_MINMAX);
-                    hists.add(hist);
-                }
-                query = hists.get(0);
-                test = hists.get(1);
+                List<Mat> imgs1 = new ArrayList<>();
 
-                double ret_C = imgproc.compareHist(query, hist, imgproc.HISTCMP_CORREL);
-                double ret_I = imgproc.compareHist(query, hist, imgproc.HISTCMP_INTERSECT);
-                Scalar sumDiff = Core.sumElems(query);
-                double sumDiffSee = 0;
-                for (int j = 0; j < sumDiff.val.length; j++) {
-                    sumDiffSee += sumDiff.val[j];
-                }
-                ret_I = ret_I / sumDiffSee;
-                double ret_B = imgproc.compareHist(query, hist, imgproc.HISTCMP_BHATTACHARYYA);
-                System.out.println("비교 전: query_number = " + query_number + "\nc_n = " + compare_number + " " + contin_f + "\nquery_point = " + query_point +
-                        "\ncompare_point = " + compare_point + "\na = " + a + "\nx = " + x);
-                if (ret_C >= corr && ret_I >= inter && ret_B <= bhatt) {
-                    String temp = (sim + 1) + "번 유사. \nquery 영상 중 " + (query_point + 1) + "번째 프레임과 test 영상 중 " + (x + compare_point) + "번째 프레임이 유사합니다.***";
+                imgs.add(query);
+                imgs1.add(test);
+
+                MatOfFloat ranges = new MatOfFloat(0,255);
+                MatOfInt histSize = new MatOfInt(50);
+                MatOfInt channels = new MatOfInt(0);
+
+                Imgproc.calcHist(imgs, channels, new Mat(), query, histSize, ranges);
+                Imgproc.calcHist(imgs1, channels, new Mat(), test, histSize, ranges);
+
+                Core.normalize(query, query, 0, 1, Core.NORM_MINMAX, -1, new Mat());
+                Core.normalize(test, test, 0, 1, Core.NORM_MINMAX, -1, new Mat());
+
+                double result0, result1, result2, result3;
+                result0 = Imgproc.compareHist(query, test, 0); // correl
+                result1 = Imgproc.compareHist(query, test, 1);
+                result2 = Imgproc.compareHist(query, test, 2); // inter
+                result3 = Imgproc.compareHist(query, test, 3); // batt
+
+//                List<Mat> hists = new ArrayList<>();
+//                Mat hist = new Mat();
+//                for (int i = 0; i < imgs.size(); i++) {
+//                    List<Mat> hsv = new ArrayList<>();
+//                    Mat hsvTemp = new Mat();
+//                    imgproc.cvtColor(imgs.get(i), hsvTemp, imgproc.COLOR_BGR2HSV);
+//                    hsv.add(hsvTemp);
+//                    int hbins = 100, sbins = 256;
+//                    MatOfInt histSize = new MatOfInt(hbins, sbins);
+//                    MatOfFloat histRange = new MatOfFloat(0f, 180f, 0f, 256f);
+//                    imgproc.calcHist(hsv, new MatOfInt(0, 1), new Mat(), hist, histSize, histRange);
+//                    Core core = new Core();
+//                    core.normalize(hist, hist, 0f, 1f, core.NORM_MINMAX);
+//                    hists.add(hist);
+//                }
+//                query = hists.get(0);
+//                test = hists.get(1);
+//
+//                double ret_C = imgproc.compareHist(query, hist, imgproc.HISTCMP_CORREL);
+//                double ret_I = imgproc.compareHist(query, hist, imgproc.HISTCMP_INTERSECT);
+//                Scalar sumDiff = Core.sumElems(query);
+//                double sumDiffSee = 0;
+//                for (int j = 0; j < sumDiff.val.length; j++) {
+//                    sumDiffSee += sumDiff.val[j];
+//                }
+//                ret_I = ret_I / sumDiffSee;
+//                double ret_B = imgproc.compareHist(query, hist, imgproc.HISTCMP_BHATTACHARYYA);
+//                System.out.println("비교 전: query_number = " + query_number + "\nc_n = " + compare_number + " " + contin_f + "\nquery_point = " + query_point +
+//                        "\ncompare_point = " + compare_point + "\na = " + a + "\nx = " + x);
+                if (result0 >= corr && result2 >= inter && result3 <= bhatt) {
+                    String temp = (sim + 1) + "번 유사. \nquery 영상 중 " + query_point + "번째 프레임과 test 영상 중 " + compare_point + "번째 프레임이 유사합니다.***";
                     resultStr[index] = temp;
-                    correlStr[index] = "CORREL : " + ret_C;
-                    intersectStr[index] = "INTERSECT : " + ret_I;
-                    bhattacharyyaStr[index] = "BHATTACHARYYA : " + ret_B;
+                    correlStr[index] = "CORREL : " + result0;
+                    intersectStr[index] = "INTERSECT : " + result2;
+                    bhattacharyyaStr[index] = "BHATTACHARYYA : " + result3;
 
                     result.setResult(resultStr);
                     result.setCorrel(correlStr);
@@ -105,7 +124,7 @@ public class CompareVideo {
                 } else {
                     compare_point += 1;
                 }
-                hists.clear();
+//                hists.clear();
 
                 if ((compare_number / 2) + (a + 1) >= compare_number - (a * contin_f)) {
                     if ((x + compare_point) == compare_number - (contin_f * (a + 1))) {
